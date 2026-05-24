@@ -1,6 +1,9 @@
 # Dockerfile
 FROM php:8.2-apache
 
+# Fix Apache MPM conflict
+RUN a2dismod mpm_event || true && a2enmod mpm_prefork
+
 # Install required extensions
 RUN apt-get update && apt-get install -y \
     libzip-dev \
