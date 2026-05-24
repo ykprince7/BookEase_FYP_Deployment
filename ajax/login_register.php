@@ -1,10 +1,14 @@
 <?php 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 require('../admin/inc/db_config.php'); // Includes db_config.php where the filteration function is defined
 require('../admin/inc/essentials.php');
 require('../inc/google_config.php');
 require('../inc/welcome_bonus.php');
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 date_default_timezone_set("Asia/Kathmandu");
 
 use PHPMailer\PHPMailer\PHPMailer;
