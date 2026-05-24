@@ -138,12 +138,12 @@ function send_mail($uemail, $token, $type)
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'np03cs4a230422@heraldcollege.edu.np';
-        $mail->Password = 'pjgd bhlf dngu occa';
+        $mail->Username = 'bookease.noreply69@gmail.com';
+        $mail->Password = 'wvkf hjoh gmvu mqdr;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
-        $mail->setFrom('np03cs4a230422@heraldcollege.edu.np', 'BookEase');
+        $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress($uemail);
 
         $mail->isHTML(true);
