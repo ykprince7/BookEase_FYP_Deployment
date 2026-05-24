@@ -6,10 +6,10 @@ if (defined('BOOKEASE_DB_CONFIG_LOADED')) {
 }
 define('BOOKEASE_DB_CONFIG_LOADED', true);
 
-  $hname = 'mysql';
-  $uname = 'bookease_user';
-  $pass = 'bookease_pass';
-  $db = 'bookease_db';
+$hname = 'mysql.railway.internal';
+$uname = 'root';
+$pass = 'AimJvmirCyOAbGBhyLuYYKZVGjjYyNPy';
+$db = 'railway';
 
   $con = mysqli_connect($hname,$uname,$pass,$db);
 
