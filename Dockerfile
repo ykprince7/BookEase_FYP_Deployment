@@ -1,20 +1,37 @@
-FROM php:8.2-apache
-
-RUN sed -i 's/^/#/' /etc/apache2/mods-enabled/mpm_event.load 2>/dev/null || true
-RUN sed -i 's/^/#/' /etc/apache2/mods-enabled/mpm_event.conf 2>/dev/null || true
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip \
-    && docker-php-ext-install mysqli pdo pdo_mysql zip \
-    && apt-get clean
+    apache2 \
+    php8.1 \
+    php8.1-mysqli \
+    php8.1-pdo \
+    libapache2-mod-php8.1 \
+    php8.1-zip \
+    unzip \
+    && apt-get clean \
+    && rm -rf /var/www/html/*
 
-RUN a2enmod rewrite
-
-RUN rm -f /var/www/html/index.html
+RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
+    && a2enmod mpm_prefork rewrite php8.1
 
 COPY . /var/www/html
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
+RUN printf '<VirtualHost *:80>\n\
+    DocumentRoot /var/www/html\n\
+    DirectoryIndex index.php index.html\n\
+    <Directory /var/www/html>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+</VirtualHost>\n' > /etc/apache2/sites-available/000-default.conf \
+    && a2dissite default 2>/dev/null || true \
+    && a2ensite 000-default \
+    && rm -f /var/www/html/index.html
+
 EXPOSE 80
+
+CMD ["bash", "-c", "a2dismod mpm_event mpm_worker 2>/dev/null; a2enmod mpm_prefork 2>/dev/null; apache2ctl -D FOREGROUND"]
