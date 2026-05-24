@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libapache2-mod-php8.1 \
     php8.1-zip \
     php8.1-curl \
+    php8.1-mbstring \
     unzip \
     curl \
     && apt-get clean \
@@ -21,7 +22,7 @@ RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
 
 COPY . /var/www/html
 
-RUN cd /var/www/html && composer install --no-dev --optimize-autoloader
+RUN rm -rf /var/www/html/vendor && cd /var/www/html && composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
