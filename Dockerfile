@@ -27,7 +27,10 @@ RUN echo '<VirtualHost *:80>\n\
         AllowOverride All\n\
         Require all granted\n\
     </Directory>\n\
-</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf \
+    && a2dissite default || true \
+    && a2ensite 000-default \
+    && rm -f /var/www/html/index.html
 
 EXPOSE 80
 
