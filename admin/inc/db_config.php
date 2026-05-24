@@ -6,12 +6,13 @@ if (defined('BOOKEASE_DB_CONFIG_LOADED')) {
 }
 define('BOOKEASE_DB_CONFIG_LOADED', true);
 
-$hname = 'mysql.railway.internal';
+$hname = 'kodama.proxy.rlwy.net';
 $uname = 'root';
-$pass = 'AimJvmirCyOAbGBhyLuYYKZVGjjYyNPy';
+$pass = 'bIHgGtORmwsCCyNEizUcuInqOgVuLQCY';
 $db = 'railway';
+$port = 13459;
 
-  $con = mysqli_connect($hname,$uname,$pass,$db);
+$con = mysqli_connect($hname, $uname, $pass, $db, $port);
 
   if(!$con){
     die("Cannot Connect to Database".mysqli_connect_error());
