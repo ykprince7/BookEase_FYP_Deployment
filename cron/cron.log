@@ -1,0 +1,1253 @@
+[Sun 04/19/2026 11:43:09.89] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 04/19/2026 11:43:14.13] Done. 
+[Sun 04/19/2026 11:58:03.89] Running exchange rate update... 
+Exchange rates updated successfully. Rows processed: 172. API data as of: 2026-04-19 08:00:01[Sun 04/19/2026 11:58:05.89] Done. 
+[Sun 04/19/2026 12:00:01.60] Running exchange rate update... 
+Exchange rates updated successfully. Rows processed: 172. API data as of: 2026-04-19 08:00:01[Sun 04/19/2026 12:00:05.46] Done. 
+[Thu 04/23/2026  8:00:02.07] Running exchange rate update... 
+^C[Thu 04/23/2026  9:23:24.59] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 04/23/2026  9:23:33.77] Done. 
+[Sun 04/26/2026  7:17:23.98] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 04/26/2026  7:17:34.28] Done. 
+[Sun 04/26/2026  8:00:01.08] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 04/26/2026  8:00:06.29] Done. 
+[Sun 04/26/2026 11:22:19.51] Running exchange rate update... 
+^C[Sun 04/26/2026 12:00:00.99] Running exchange rate update... 
+^C[Thu 04/30/2026  8:00:01.60] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 04/30/2026  8:00:06.69] Done. 
+[Thu 04/30/2026 10:00:02.08] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 04/30/2026 10:00:07.02] Done. 
+[Sun 05/03/2026 21:00:02.22] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/03/2026 21:00:07.69] Done. 
+[Sun 05/03/2026 22:00:00.99] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/03/2026 22:00:07.31] Done. 
+[Mon 05/04/2026 16:16:12.72] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/04/2026 16:16:19.12] Done. 
+[Mon 05/04/2026 17:00:00.18] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/04/2026 17:00:04.53] Done. 
+[Mon 05/04/2026 18:00:00.23] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/04/2026 18:00:05.24] Done. 
+[Mon 05/04/2026 19:00:00.28] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/04/2026 19:00:04.72] Done. 
+[Mon 05/04/2026 20:00:00.16] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/04/2026 20:00:04.29] Done. 
+[Mon 05/04/2026 21:00:00.49] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/04/2026 21:00:04.90] Done. 
+[Mon 05/04/2026 22:00:00.24] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/04/2026 22:00:04.80] Done. 
+[Mon 05/04/2026 23:00:00.28] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/04/2026 23:00:04.62] Done. 
+[Tue 05/05/2026  0:00:02.33] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Tue 05/05/2026  0:00:06.64] Done. 
+[Tue 05/05/2026 11:00:00.65] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Tue 05/05/2026 11:00:04.98] Done. 
+[Tue 05/05/2026 12:00:00.69] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Tue 05/05/2026 12:00:05.72] Done. 
+[Tue 05/05/2026 13:00:00.61] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Tue 05/05/2026 13:00:04.76] Done. 
+[Thu 05/07/2026 11:00:04.03] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 11:00:09.07] Done. 
+[Thu 05/07/2026 12:00:00.88] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 12:00:05.21] Done. 
+[Thu 05/07/2026 13:00:00.81] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 13:00:08.74] Done. 
+[Thu 05/07/2026 14:00:01.74] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 14:00:06.09] Done. 
+[Thu 05/07/2026 15:00:00.86] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 15:00:05.15] Done. 
+[Thu 05/07/2026 16:00:00.90] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 16:00:05.16] Done. 
+[Thu 05/07/2026 17:00:00.87] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 17:00:05.24] Done. 
+[Thu 05/07/2026 18:00:00.93] Running exchange rate update... 
+[Thu 05/07/2026 20:47:41.54] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 20:47:51.31] Done. 
+[Thu 05/07/2026 21:00:00.97] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 21:00:05.38] Done. 
+[Thu 05/07/2026 22:00:00.94] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 22:00:05.12] Done. 
+[Thu 05/07/2026 23:00:00.92] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/07/2026 23:00:05.22] Done. 
+[Fri 05/08/2026 11:00:03.24] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Fri 05/08/2026 11:00:08.54] Done. 
+[Fri 05/08/2026 12:00:01.16] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Fri 05/08/2026 12:00:08.60] Done. 
+[Fri 05/08/2026 13:00:01.12] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Fri 05/08/2026 13:00:05.34] Done. 
+[Sat 05/09/2026 15:00:00.43] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/09/2026 15:00:08.36] Done. 
+[Sat 05/09/2026 19:00:01.41] Running exchange rate update... 
+^C[Sat 05/09/2026 20:00:00.36] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/09/2026 20:00:04.74] Done. 
+[Sat 05/09/2026 21:00:00.37] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/09/2026 21:00:05.02] Done. 
+[Sat 05/09/2026 22:00:00.40] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/09/2026 22:00:04.72] Done. 
+[Sat 05/09/2026 23:00:02.58] Running exchange rate update... 
+^C[Sun 05/10/2026  0:00:00.39] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  0:00:04.63] Done. 
+[Sun 05/10/2026  1:00:00.45] Running exchange rate update... 
+^C[Sun 05/10/2026  2:00:00.48] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  2:00:04.90] Done. 
+[Sun 05/10/2026  3:00:00.48] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  3:00:04.91] Done. 
+[Sun 05/10/2026  4:00:00.48] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  4:00:04.74] Done. 
+[Sun 05/10/2026  5:00:00.49] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  5:00:04.89] Done. 
+[Sun 05/10/2026  6:00:00.55] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  6:00:04.81] Done. 
+[Sun 05/10/2026  7:00:00.46] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  7:00:04.67] Done. 
+[Sun 05/10/2026  8:00:00.48] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  8:00:04.84] Done. 
+[Sun 05/10/2026  9:00:00.58] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026  9:00:05.54] Done. 
+[Sun 05/10/2026 10:00:00.48] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026 10:00:04.66] Done. 
+[Sun 05/10/2026 13:23:59.90] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026 13:24:04.31] Done. 
+[Sun 05/10/2026 14:00:01.12] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026 14:00:05.42] Done. 
+[Sun 05/10/2026 15:00:01.13] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026 15:00:05.55] Done. 
+[Sun 05/10/2026 18:25:17.27] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/10/2026 18:25:21.92] Done. 
+[Sun 05/10/2026 19:00:00.15] Running exchange rate update... 
+^C[Tue 05/12/2026 23:00:01.05] Running exchange rate update... 
+^C[Wed 05/13/2026  0:00:02.62] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Wed 05/13/2026  0:00:07.08] Done. 
+[Wed 05/13/2026 22:33:12.97] Running exchange rate update... 
+^C[Wed 05/13/2026 23:00:00.70] Running exchange rate update... 
+^C[Thu 05/14/2026  0:00:00.68] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/14/2026  0:00:06.96] Done. 
+[Thu 05/14/2026 12:37:01.93] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Thu 05/14/2026 12:37:11.04] Done. 
+[Thu 05/14/2026 13:00:01.13] Running exchange rate update... 
+^C[Sat 05/16/2026 15:00:00.81] Running exchange rate update... 
+^C[Sat 05/16/2026 16:00:00.78] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/16/2026 16:00:05.46] Done. 
+[Sat 05/16/2026 17:00:00.78] Running exchange rate update... 
+^C[Sat 05/16/2026 18:00:00.79] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/16/2026 18:00:04.99] Done. 
+[Sat 05/16/2026 20:09:12.42] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/16/2026 20:09:16.62] Done. 
+[Sat 05/16/2026 21:00:00.82] Running exchange rate update... 
+^C[Sat 05/16/2026 22:00:00.89] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/16/2026 22:00:05.33] Done. 
+[Sat 05/16/2026 23:00:00.83] Running exchange rate update... 
+^C[Sun 05/17/2026  0:00:00.84] Running exchange rate update... 
+^C[Sun 05/17/2026  1:00:00.90] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/17/2026  1:00:05.26] Done. 
+[Sun 05/17/2026 12:12:59.57] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/17/2026 12:13:03.91] Done. 
+[Sun 05/17/2026 13:00:00.22] Running exchange rate update... 
+^C[Sun 05/17/2026 14:00:00.97] Running exchange rate update... 
+^C[Mon 05/18/2026 14:22:18.58] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/18/2026 14:22:35.84] Done. 
+[Mon 05/18/2026 15:00:03.27] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/18/2026 15:00:07.97] Done. 
+[Mon 05/18/2026 16:00:01.08] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Mon 05/18/2026 16:00:05.29] Done. 
+[Fri 05/22/2026 13:00:00.93] Running exchange rate update... 
+^C[Fri 05/22/2026 14:00:00.97] Running exchange rate update... 
+Exchange rates updated successfully. Rows processed: 172. API data as of: 2026-05-22 10:00:00[Fri 05/22/2026 14:00:03.34] Done. 
+[Fri 05/22/2026 15:00:02.87] Running exchange rate update... 
+Exchange rates updated successfully. Rows processed: 172. API data as of: 2026-05-22 11:00:00[Fri 05/22/2026 15:00:06.69] Done. 
+[Fri 05/22/2026 16:00:00.58] Running exchange rate update... 
+Exchange rates updated successfully. Rows processed: 172. API data as of: 2026-05-22 12:00:00[Fri 05/22/2026 16:00:02.37] Done. 
+[Fri 05/22/2026 17:06:05.33] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Fri 05/22/2026 17:06:09.73] Done. 
+[Fri 05/22/2026 18:00:00.83] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Fri 05/22/2026 18:00:05.11] Done. 
+[Fri 05/22/2026 19:00:00.65] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Fri 05/22/2026 19:00:04.96] Done. 
+[Fri 05/22/2026 20:00:00.94] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Fri 05/22/2026 20:00:06.05] Done. 
+[Fri 05/22/2026 21:00:00.69] Running exchange rate update... 
+Exchange rates updated successfully. Rows processed: 172. API data as of: 2026-05-22 17:00:00[Fri 05/22/2026 21:00:03.82] Done. 
+[Fri 05/22/2026 22:00:00.65] Running exchange rate update... 
+Exchange rates updated successfully. Rows processed: 172. API data as of: 2026-05-22 18:00:00[Fri 05/22/2026 22:00:02.46] Done. 
+[Sat 05/23/2026 13:35:13.19] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/23/2026 13:35:18.02] Done. 
+[Sat 05/23/2026 14:00:02.79] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/23/2026 14:00:07.14] Done. 
+[Sat 05/23/2026 15:00:00.68] Running exchange rate update... 
+^C[Sat 05/23/2026 16:17:01.82] Running exchange rate update... 
+^C[Sat 05/23/2026 17:00:00.66] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/23/2026 17:00:07.58] Done. 
+[Sat 05/23/2026 19:10:48.44] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/23/2026 19:10:52.91] Done. 
+[Sat 05/23/2026 20:00:00.70] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/23/2026 20:00:07.20] Done. 
+[Sat 05/23/2026 21:00:00.70] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/23/2026 21:00:05.02] Done. 
+[Sat 05/23/2026 22:07:48.50] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/23/2026 22:07:52.81] Done. 
+[Sat 05/23/2026 23:00:00.72] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sat 05/23/2026 23:00:05.06] Done. 
+[Sun 05/24/2026  0:00:00.71] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/24/2026  0:00:04.98] Done. 
+[Sun 05/24/2026  1:00:00.73] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/24/2026  1:00:05.05] Done. 
+[Sun 05/24/2026  2:00:00.72] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/24/2026  2:00:04.96] Done. 
+[Sun 05/24/2026  6:35:22.54] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/24/2026  6:35:28.20] Done. 
+[Sun 05/24/2026  7:00:00.79] Running exchange rate update... 
+PHP Fatal error:  Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('localhost', 'root', Object(SensitiveParameterValue), 'hbw')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/24/2026  7:00:05.02] Done. 
+[Sun 05/24/2026 17:00:00.28] Running exchange rate update... 
+^C

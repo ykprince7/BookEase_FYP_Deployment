@@ -1,0 +1,24 @@
+# Ignore unnecessary files for Docker build
+.git
+.github
+.vscode
+.vercel
+node_modules
+vendor
+tmp
+logs
+*.log
+cron.log
+.dockerignore
+.gitignore
+README.md
+composer.lock
+*.md
+
+# Large image folders (if not needed immediately)
+images/360/
+# images/     # Uncomment only if you want to exclude all images
+
+# Temporary files
+tmp_*.*
+test_*.php

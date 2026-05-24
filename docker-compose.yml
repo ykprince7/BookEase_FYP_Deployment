@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  php-apache:
+    build: .
+    container_name: bookease-php
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: bookease-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: bookease_db
+      MYSQL_USER: bookease_user
+      MYSQL_PASSWORD: bookease_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
