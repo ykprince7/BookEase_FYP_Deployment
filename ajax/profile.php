@@ -9,7 +9,9 @@
   if(isset($_POST['info_form']))
   {
     $frm_data = filteration($_POST);
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+      session_start();
+  }
 
     if (preg_match('/^[0-9]{10}$/', $frm_data['phonenum']) !== 1) {
       echo 'phone_invalid';

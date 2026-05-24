@@ -5,7 +5,9 @@ require_once('inc/currency_helpers.php');
 require_once('inc/loyalty_points.php');
 require_once('vendor/autoload.php');
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 \Stripe\Stripe::setApiKey('sk_test_51TDMJa4Gjr7oYQNHK8x9wqD6bGFms0RuSXhkrup4w9RqPeOJunbUWMkyadf1NinQNGNLZl7B8bQzXpz8Sl3cL9rC005ENdyRf2');
 

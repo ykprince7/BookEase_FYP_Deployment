@@ -1250,4 +1250,23 @@ Stack trace:
   thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
 [Sun 05/24/2026  7:00:05.02] Done. 
 [Sun 05/24/2026 17:00:00.28] Running exchange rate update... 
-^C
+^C[Sun 05/24/2026 18:35:44.04] Running exchange rate update... 
+PHP Warning:  mysqli_connect(): php_network_getaddresses: getaddrinfo for mysql.railway.internal failed: No such host is known.  in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Warning: mysqli_connect(): php_network_getaddresses: getaddrinfo for mysql.railway.internal failed: No such host is known.  in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+PHP Fatal error:  Uncaught mysqli_sql_exception: php_network_getaddresses: getaddrinfo for mysql.railway.internal failed: No such host is known.  in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('mysql.railway.i...', 'root', Object(SensitiveParameterValue), 'railway')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+
+Fatal error: Uncaught mysqli_sql_exception: php_network_getaddresses: getaddrinfo for mysql.railway.internal failed: No such host is known.  in C:\xampp\htdocs\BookEase\admin\inc\db_config.php:14
+Stack trace:
+#0 C:\xampp\htdocs\BookEase\admin\inc\db_config.php(14): mysqli_connect('mysql.railway.i...', 'root', Object(SensitiveParameterValue), 'railway')
+#1 C:\xampp\htdocs\BookEase\cron\update_exchange_rates.php(10): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 14
+[Sun 05/24/2026 18:35:44.28] Done. 
+[Sun 05/24/2026 19:00:00.26] Running exchange rate update... 
+Exchange rate update failed: Table 'railway.exchange_rates' doesn't exist[Sun 05/24/2026 19:00:03.97] Done. 

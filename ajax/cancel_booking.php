@@ -4,7 +4,9 @@
   require('../admin/inc/essentials.php');
 
   date_default_timezone_set("Asia/Kolkata");
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
   if(!(isset($_SESSION['login']) && $_SESSION['login']==true)){
     redirect('index.php');

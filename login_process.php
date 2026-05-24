@@ -2,7 +2,9 @@
 // login_process.php - Handles user login authentication
 
 // Start session to manage user login state
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Database connections and essentials
 $host = 'localhost';

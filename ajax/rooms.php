@@ -6,7 +6,9 @@
   require_once('../inc/currency_helpers.php');
   date_default_timezone_set("Asia/Kathmandu");
 
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
   $base_currency = 'NPR'; // Define the base currency as Nepalese Rupee
 

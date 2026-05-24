@@ -2,7 +2,9 @@
 require('admin/inc/db_config.php');
 require('admin/inc/essentials.php');
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_GET['order']) || empty($_GET['order'])) {
     redirect('index.php');

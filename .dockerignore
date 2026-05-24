@@ -4,6 +4,7 @@
 .vscode
 .vercel
 node_modules
+vendor
 tmp
 logs
 *.log

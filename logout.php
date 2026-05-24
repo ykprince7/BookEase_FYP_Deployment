@@ -2,7 +2,9 @@
 
   require('admin/inc/essentials.php');
 
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
   session_destroy();
   redirect('index.php');
 

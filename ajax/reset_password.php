@@ -3,7 +3,9 @@ require('admin/inc/db_config.php');
 require('admin/inc/essentials.php');
 
 date_default_timezone_set("Asia/Kathmandu");
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 $settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
 $settings_r = mysqli_fetch_assoc(select($settings_q, [1], 'i'));
