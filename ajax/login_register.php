@@ -139,7 +139,7 @@ function send_mail($uemail, $token, $type)
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'bookease.noreply69@gmail.com';
-        $mail->Password = 'wvkf hjoh gmvu mqdr;
+        $mail->Password = 'wvkf hjoh gmvu mqdr';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
