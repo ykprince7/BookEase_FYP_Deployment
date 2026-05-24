@@ -8,14 +8,20 @@ RUN apt-get update && apt-get install -y \
     php8.1-pdo \
     libapache2-mod-php8.1 \
     php8.1-zip \
+    php8.1-curl \
     unzip \
+    curl \
     && apt-get clean \
     && rm -rf /var/www/html/*
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
     && a2enmod mpm_prefork rewrite php8.1
 
 COPY . /var/www/html
+
+RUN cd /var/www/html && composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
