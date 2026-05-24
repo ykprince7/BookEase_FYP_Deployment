@@ -14,15 +14,20 @@ RUN apt-get update && apt-get install -y \
 
 RUN a2enmod rewrite php8.1
 
-# Remove default Apache page
 RUN rm -rf /var/www/html/*
 
 COPY . /var/www/html
 
-COPY apache-site.conf /etc/apache2/sites-available/000-default.conf
-
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
+
+RUN echo '<VirtualHost *:80>\n\
+    DocumentRoot /var/www/html\n\
+    <Directory /var/www/html>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 
