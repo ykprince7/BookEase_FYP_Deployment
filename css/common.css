@@ -963,14 +963,19 @@ body::before {
 }
 
 h1,
-h2,
 h3,
 .h1,
-.h2,
 .h3,
 .h-font {
   background: none !important;
   color: #fff !important;
+  animation: none !important;
+}
+
+h2,
+.h2{
+  background: none !important;
+  color:#0f172a !important;
   animation: none !important;
 }
 
