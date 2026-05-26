@@ -141,8 +141,8 @@ function send_mail($uemail, $token, $type)
         $mail->SMTPAuth = true;
         $mail->Username = 'bookease.noreply69@gmail.com';
         $mail->Password = 'wvkf hjoh gmvu mqdr';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
 
         $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress($uemail);
@@ -172,7 +172,7 @@ function send_mail($uemail, $token, $type)
 
 if (isset($_GET['test_mail'])) {
     $result = send_mail('np03cs4a230422@heraldcollege.edu.np', '123456', 'email_confirmation');
-    echo $result ? 'Mail sent!' : 'Mail failed';
+    echo $result ? 'Mail sent!' : 'Mail failed: ' . error_get_last()['message'] ?? 'unknown';
     exit;
 }
 
