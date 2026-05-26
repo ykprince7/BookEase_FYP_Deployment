@@ -132,6 +132,9 @@
     .booking-details-toggle i.rotated {
       transform: rotate(180deg);
     }
+    h2{
+      color:#0f172a !important
+    }
   </style>
 </head>
 <body class="bg-light">
