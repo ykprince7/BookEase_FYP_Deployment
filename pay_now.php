@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once('admin/inc/db_config.php');
 require_once('admin/inc/essentials.php');
 require_once('inc/currency_helpers.php');
@@ -9,8 +10,6 @@ require_once('inc/room_availability.php');
 require_once('vendor/autoload.php');
 
 date_default_timezone_set("Asia/Kathmandu");
-
-session_start();
 
 if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
   redirect('index.php');
@@ -166,8 +165,8 @@ if (isset($_POST['pay_now'])) {
       ],
       'mode' => 'payment',
       'client_reference_id' => $ORDER_ID,
-      'success_url' => 'http://localhost/BookEase/pay_response.php?session_id={CHECKOUT_SESSION_ID}',
-      'cancel_url' => 'http://localhost/BookEase/pay_status.php?status=failed',
+      'success_url' => 'https://bookeasefypdeployment-production.up.railway.app/pay_response.php?session_id={CHECKOUT_SESSION_ID}',
+      'cancel_url' => 'https://bookeasefypdeployment-production.up.railway.app/pay_status.php?status=failed',
     ]);
 
     header("Location: " . $checkoutSession->url);
