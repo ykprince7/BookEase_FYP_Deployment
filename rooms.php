@@ -1,5 +1,5 @@
 <?php 
-  // Assuming your connection to the database is already established
+  session_start();
   require('inc/links.php');
 ?>
 

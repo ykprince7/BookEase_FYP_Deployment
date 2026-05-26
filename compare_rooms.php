@@ -12,7 +12,7 @@ $room_ids = json_decode($_POST['room_ids'], true);
 if (!is_array($room_ids)) {
     echo "<div class='alert alert-danger mb-0'>Invalid selection.</div>";
     exit;
-}
+}bn 
 
 $room_ids = array_values(array_unique(array_map('intval', $room_ids)));
 $room_ids = array_slice($room_ids, 0, 2);
