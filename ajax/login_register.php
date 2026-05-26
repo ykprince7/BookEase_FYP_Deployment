@@ -114,28 +114,18 @@ function send_mail($uemail, $token, $type)
 
     if ($type == "email_confirmation") {
         $subject = "BookEase - Verify your account OTP";
-        $mailBody = "
-            <p>Your verification OTP code is: <b>$token</b></p>
-            <p>Enter this OTP in the app to verify your account.</p>
-        ";
+        $mailBody = "<p>Your verification OTP code is: <b>$token</b></p><p>Enter this OTP to verify your account.</p>";
         $mailAltBody = "Your verification OTP code is: $token";
     } else if ($type == "account_recovery_otp") {
         $subject = "BookEase - Password Reset OTP";
-        $mailBody = "
-            <p>Your password reset OTP is: <b>$token</b></p>
-            <p>Enter this OTP on the site to reset your password.</p>
-        ";
+        $mailBody = "<p>Your password reset OTP is: <b>$token</b></p>";
         $mailAltBody = "Your password reset OTP is: $token";
     } else {
         $subject = "Account Reset Link";
-        $query = http_build_query([
-            'account_recovery' => '1',
-            'email' => $uemail,
-            'token' => $token,
-        ], '', '&', PHP_QUERY_RFC3986);
+        $query = http_build_query(['account_recovery' => '1', 'email' => $uemail, 'token' => $token]);
         $link = $base . '/reset_password.php?' . $query;
-        $mailBody = "Click the link to reset your account: <br><a href=\"$link\">CLICK ME</a>";
-        $mailAltBody = "Open this link: $link";
+        $mailBody = "Click here to reset: <a href=\"$link\">Reset Password</a>";
+        $mailAltBody = "Reset link: $link";
     }
 
     $mail = new PHPMailer(true);
@@ -145,9 +135,15 @@ function send_mail($uemail, $token, $type)
         $mail->Host       = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'f6f8a44d849cf8';
-        $mail->Password   = '55979edcf8bb21d';           // Make sure this is correct
+        $mail->Password   = '5979edcf8bb21d';        // Make sure no extra space
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 2525;
+
+        // Debug Mode
+        $mail->SMTPDebug  = 2;
+        $mail->Debugoutput = function($str, $level) {
+            error_log("SMTP Debug: " . $str);
+        };
 
         $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress($uemail);
@@ -157,17 +153,12 @@ function send_mail($uemail, $token, $type)
         $mail->Body    = $mailBody;
         $mail->AltBody = $mailAltBody;
 
-        $mail->SMTPDebug = 2;   // Enable debug
-        $mail->Debugoutput = function($str, $level) {
-            error_log("SMTP Debug: $str");
-        };
-
         if ($mail->send()) {
             return 1;
-        }
+        } 
         return 0;
     } catch (Exception $e) {
-        error_log('Mail Error: ' . $mail->ErrorInfo . ' | ' . $e->getMessage());
+        error_log('Mail Error: ' . $mail->ErrorInfo . ' | Exception: ' . $e->getMessage());
         return 0;
     }
 }
