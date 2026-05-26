@@ -15,10 +15,6 @@ README.md
 composer.lock
 *.md
 
-# Large image folders (if not needed immediately)
-images/360/
-# images/     # Uncomment only if you want to exclude all images
-
 # Temporary files
 tmp_*.*
 test_*.php
