@@ -1,6 +1,5 @@
 <?php 
   session_start();
-  require('inc/header.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +17,6 @@
   </style>
 </head>
 <body class="bg-light">
-
   <div class="my-5 px-4">
     <h2 class="fw-bold h-font text-center">ABOUT US</h2>
     <div class="h-line bg-dark"></div>
