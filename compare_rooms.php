@@ -12,7 +12,7 @@ $room_ids = json_decode($_POST['room_ids'], true);
 if (!is_array($room_ids)) {
     echo "<div class='alert alert-danger mb-0'>Invalid selection.</div>";
     exit;
-}bn 
+}
 
 $room_ids = array_values(array_unique(array_map('intval', $room_ids)));
 $room_ids = array_slice($room_ids, 0, 2);
@@ -64,10 +64,7 @@ foreach ($room_ids as $room_id) {
     if ($thumb_q && mysqli_num_rows($thumb_q) > 0) {
         $tr = mysqli_fetch_assoc($thumb_q);
         if (!empty($tr['image'])) {
-            $local_path = $_SERVER['DOCUMENT_ROOT'] . '/BookEase/images/rooms/' . $tr['image'];
-            if (file_exists($local_path)) {
-                $thumb = ROOMS_IMG_PATH . $tr['image'];
-            }
+            $thumb = ROOMS_IMG_PATH . $tr['image'];
         }
     }
     $rooms[] = [
