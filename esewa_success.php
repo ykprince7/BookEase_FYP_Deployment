@@ -78,7 +78,7 @@ if(isset($_GET['data'])) {
 
         // Verify the transaction with eSewa
         $merchant_code = "EPAYTEST";
-        $url = "https://rc.esewa.com.np/api/epay/transaction/status";
+        $url = "https://uat.esewa.com.np/api/epay/transaction/status";
         
         $query_params = http_build_query([
             'transaction_uuid' => $transaction_uuid,
