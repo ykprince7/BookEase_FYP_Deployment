@@ -1,3 +1,5 @@
+<?php session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -260,7 +262,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         const selectedCurrency = urlParams.get('currency') || 'NPR';
         if (!login) {
-            window.location.href = 'login.php';
+            var loginModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('loginModal'));
+            loginModal.show();
         } else {
             window.location.href = 'confirm_booking.php?id=' + room_id + '&currency=' + selectedCurrency;
         }
