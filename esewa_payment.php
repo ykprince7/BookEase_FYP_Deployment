@@ -24,7 +24,7 @@ if (isset($_GET['order_id']) && isset($_GET['amount'])) {
     $success_url = "https://" . $_SERVER['HTTP_HOST'] . "/BookEase/esewa_success.php";
     $failure_url = "https://" . $_SERVER['HTTP_HOST'] . "/BookEase/esewa_failure.php";
 
-    $esewa_url = "https://uat.esewa.com.np/api/epay/main/v2/form";
+    $esewa_url = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
 
     $transaction_uuid = $ORDER_ID;
 
