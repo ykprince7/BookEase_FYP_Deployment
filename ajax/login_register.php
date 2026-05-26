@@ -15,6 +15,11 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php'; // Include PHPMailer's autoloader (if using Composer)
+if (isset($_GET['test_mail'])) {
+    $result = send_mail('np03cs4a230422@heraldcollege.edu.np', '123456', 'email_confirmation');
+    echo $result ? 'Mail sent!' : 'Mail failed';
+    exit;
+}
 
 function fetch_remote_json($url)
 {
@@ -328,9 +333,7 @@ if (isset($_POST['verify_otp'])) {
     if ($update) {
         $bonus = awardWelcomeBonusIfEligible((int) $u_fetch['id']);
         if ($bonus['awarded']) {
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
+            if (session_status() === PHP_SESSION_NONE) { session_start(); }
             $_SESSION['welcome_bonus_awarded'] = $bonus['points'];
         }
         echo 1;
@@ -360,7 +363,7 @@ if (isset($_POST['login'])) {
             if (!password_verify($data['pass'], $u_fetch['password'])) {
                 echo 'invalid_pass';
             } else {
-                session_start();
+                if (session_status() === PHP_SESSION_NONE) { session_start(); }
                 $_SESSION['login'] = true;
                 $_SESSION['uId'] = $u_fetch['id'];
                 $_SESSION['uName'] = $u_fetch['name'];
@@ -507,7 +510,7 @@ if (isset($_POST['google_auth'])) {
             exit;
         }
 
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) { session_start(); }
         $_SESSION['login'] = true;
         $_SESSION['uId'] = $u_fetch['id'];
         $_SESSION['uName'] = $u_fetch['name'];
@@ -541,7 +544,7 @@ if (isset($_POST['google_auth'])) {
         exit;
     }
 
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) { session_start(); }
     $_SESSION['login'] = true;
     $_SESSION['uId'] = $u_fetch['id'];
     $_SESSION['uName'] = $u_fetch['name'];
