@@ -15,11 +15,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php'; // Include PHPMailer's autoloader (if using Composer)
-if (isset($_GET['test_mail'])) {
-    $result = send_mail('np03cs4a230422@heraldcollege.edu.np', '123456', 'email_confirmation');
-    echo $result ? 'Mail sent!' : 'Mail failed';
-    exit;
-}
+
 
 function fetch_remote_json($url)
 {
@@ -172,6 +168,12 @@ function send_mail($uemail, $token, $type)
         error_log('send_mail: ' . $mail->ErrorInfo);
         return 0;
     }
+}
+
+if (isset($_GET['test_mail'])) {
+    $result = send_mail('np03cs4a230422@heraldcollege.edu.np', '123456', 'email_confirmation');
+    echo $result ? 'Mail sent!' : 'Mail failed';
+    exit;
 }
 
 function is_valid_phone($phone)
