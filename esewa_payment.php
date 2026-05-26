@@ -21,8 +21,8 @@ if (isset($_GET['order_id']) && isset($_GET['amount'])) {
     $merchant_code = "EPAYTEST";
     $secret_key    = "8gBm/:&EnhH.1/q";
 
-    $success_url = "http://" . $_SERVER['HTTP_HOST'] . "/BookEase/esewa_success.php";
-    $failure_url = "http://" . $_SERVER['HTTP_HOST'] . "/BookEase/esewa_failure.php";
+    $success_url = "https://" . $_SERVER['HTTP_HOST'] . "/BookEase/esewa_success.php";
+    $failure_url = "https://" . $_SERVER['HTTP_HOST'] . "/BookEase/esewa_failure.php";
 
     $esewa_url = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
 
