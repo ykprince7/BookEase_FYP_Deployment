@@ -973,7 +973,7 @@ h3,
 }
 
 h2,
-.h2{
+.h2,.h-font{
   background: none !important;
   color:#0f172a !important;
   animation: none !important;
