@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 require('inc/links.php');
 require('inc/header.php');
 require_once('inc/loyalty_points.php');
