@@ -620,7 +620,7 @@ date_default_timezone_set("Asia/Kathmandu");
                 $profile_img = $fallbackProfile;
 
                 if(!empty($row['profile'])){
-                  $candidate_path = $_SERVER['DOCUMENT_ROOT'].'/BookEase/images/users/'.$row['profile'];
+                  $candidate_path = $_SERVER['DOCUMENT_ROOT'].'/images/users/'.$row['profile'];
                   if(file_exists($candidate_path)){
                     $profile_img = $img_path.$row['profile'];
                   }
