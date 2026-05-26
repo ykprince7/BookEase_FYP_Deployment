@@ -128,18 +128,21 @@ function send_mail($uemail, $token, $type)
         $mailAltBody = "Reset link: $link";
     }
 
+    // ✅ Read from Railway environment variables
+    $mailtrap_user = getenv('MAILTRAP_USER') ?: 'f6f8a44d849cf8';
+    $mailtrap_pass = getenv('MAILTRAP_PASS') ?: '5979edcf8bb21d';
+
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
         $mail->Host       = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'f6f8a44d849cf8';
-        $mail->Password   = '5979edcf8bb21d';        // Make sure no extra space
+        $mail->Username   = $mailtrap_user;  // ✅ was hardcoded
+        $mail->Password   = $mailtrap_pass;  // ✅ was hardcoded
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 2525;
 
-        // Debug Mode
         $mail->SMTPDebug  = 2;
         $mail->Debugoutput = function($str, $level) {
             error_log("SMTP Debug: " . $str);
@@ -153,16 +156,12 @@ function send_mail($uemail, $token, $type)
         $mail->Body    = $mailBody;
         $mail->AltBody = $mailAltBody;
 
-        if ($mail->send()) {
-            return 1;
-        } 
-        return 0;
+        return $mail->send() ? 1 : 0;
     } catch (Exception $e) {
         error_log('Mail Error: ' . $mail->ErrorInfo . ' | Exception: ' . $e->getMessage());
         return 0;
     }
 }
-
 
 function is_valid_phone($phone)
 {
