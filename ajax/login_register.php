@@ -15,7 +15,13 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php'; // Include PHPMailer's autoloader (if using Composer)
-
+if (isset($_GET['test_mail'])) {
+    $test_email = 'np03cs4a230422@heraldcollege.edu.np';   // Change if needed
+    $otp = '123456';
+    $result = send_mail($test_email, $otp, 'email_confirmation');
+    echo $result ? '✅ Mail sent successfully! Check Mailtrap Inbox.' : '❌ Mail failed!';
+    exit;
+}
 
 function fetch_remote_json($url)
 {
@@ -100,13 +106,11 @@ function get_public_site_base_url()
     }
     return 'http://localhost/BookEase';
 }
-
 function send_mail($uemail, $token, $type)
 {
     $base = get_public_site_base_url();
 
     if ($type == "email_confirmation") {
-        // $token is the OTP code in this flow.
         $subject = "BookEase - Verify your account OTP";
         $mailBody = "
             <p>Your verification OTP code is: <b>$token</b></p>
@@ -128,53 +132,39 @@ function send_mail($uemail, $token, $type)
             'token' => $token,
         ], '', '&', PHP_QUERY_RFC3986);
         $link = $base . '/reset_password.php?' . $query;
+        $mailBody = "Click the link to reset your account: <br><a href=\"$link\">CLICK ME</a>";
+        $mailAltBody = "Open this link in your browser:\n$link\n";
     }
-
-    // Password recovery uses a link; OTP verification uses a code.
-    $linkHtml = isset($link) ? htmlspecialchars($link, ENT_QUOTES, 'UTF-8') : '';
 
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'bookease.noreply69@gmail.com';
-        $mail->Password = 'wvkf hjoh gmvu mqdr';
+        $mail->Host       = 'sandbox.smtp.mailtrap.io';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'f6f8a44d849cf8';                    
+        $mail->Password   = '5979edcf8bb21d';       
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+        $mail->Port       = 2525;
 
         $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress($uemail);
 
         $mail->isHTML(true);
         $mail->Subject = $subject;
-        if ($type == "email_confirmation" || $type == "account_recovery_otp") {
-            $mail->Body = $mailBody;
-            $mail->AltBody = $mailAltBody;
-        } else {
-            $mail->Body    = "
-                Click the link to reset your account: <br>
-                <a href=\"$linkHtml\">CLICK ME</a>";
-            $mail->AltBody = "Open this link in your browser:\n$link\n";
-        }
+        $mail->Body    = $mailBody;
+        $mail->AltBody = $mailAltBody;
 
         if ($mail->send()) {
             return 1;
         }
-
         return 0;
     } catch (Exception $e) {
-        error_log('send_mail: ' . $mail->ErrorInfo);
+        error_log('send_mail Error: ' . $mail->ErrorInfo);
         return 0;
     }
 }
 
-if (isset($_GET['test_mail'])) {
-    $result = send_mail('np03cs4a230422@heraldcollege.edu.np', '123456', 'email_confirmation');
-    echo $result ? 'Mail sent!' : 'Mail failed: ' . error_get_last()['message'] ?? 'unknown';
-    exit;
-}
 
 function is_valid_phone($phone)
 {
