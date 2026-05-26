@@ -106,6 +106,8 @@ function get_public_site_base_url()
     }
     return 'http://localhost/BookEase';
 }
+
+
 function send_mail($uemail, $token, $type)
 {
     $base = get_public_site_base_url();
@@ -116,14 +118,14 @@ function send_mail($uemail, $token, $type)
             <p>Your verification OTP code is: <b>$token</b></p>
             <p>Enter this OTP in the app to verify your account.</p>
         ";
-        $mailAltBody = "Your verification OTP code is: $token\nEnter this OTP in the app to verify your account.";
+        $mailAltBody = "Your verification OTP code is: $token";
     } else if ($type == "account_recovery_otp") {
         $subject = "BookEase - Password Reset OTP";
         $mailBody = "
             <p>Your password reset OTP is: <b>$token</b></p>
             <p>Enter this OTP on the site to reset your password.</p>
         ";
-        $mailAltBody = "Your password reset OTP is: $token\nEnter this OTP on the site to reset your password.";
+        $mailAltBody = "Your password reset OTP is: $token";
     } else {
         $subject = "Account Reset Link";
         $query = http_build_query([
@@ -133,7 +135,7 @@ function send_mail($uemail, $token, $type)
         ], '', '&', PHP_QUERY_RFC3986);
         $link = $base . '/reset_password.php?' . $query;
         $mailBody = "Click the link to reset your account: <br><a href=\"$link\">CLICK ME</a>";
-        $mailAltBody = "Open this link in your browser:\n$link\n";
+        $mailAltBody = "Open this link: $link";
     }
 
     $mail = new PHPMailer(true);
@@ -142,8 +144,8 @@ function send_mail($uemail, $token, $type)
         $mail->isSMTP();
         $mail->Host       = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'f6f8a44d849cf8';                    
-        $mail->Password   = '5979edcf8bb21d';       
+        $mail->Username   = 'f6f8a44d849cf8';
+        $mail->Password   = '55979edcf8bb21d';           // Make sure this is correct
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 2525;
 
@@ -155,12 +157,17 @@ function send_mail($uemail, $token, $type)
         $mail->Body    = $mailBody;
         $mail->AltBody = $mailAltBody;
 
+        $mail->SMTPDebug = 2;   // Enable debug
+        $mail->Debugoutput = function($str, $level) {
+            error_log("SMTP Debug: $str");
+        };
+
         if ($mail->send()) {
             return 1;
         }
         return 0;
     } catch (Exception $e) {
-        error_log('send_mail Error: ' . $mail->ErrorInfo);
+        error_log('Mail Error: ' . $mail->ErrorInfo . ' | ' . $e->getMessage());
         return 0;
     }
 }
