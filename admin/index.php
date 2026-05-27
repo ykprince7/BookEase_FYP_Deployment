@@ -1,4 +1,6 @@
 <?php
+  ini_set('display_errors', 1);
+  error_reporting(E_ALL);
   require(__DIR__ . '/inc/essentials.php');
   require(__DIR__ . '/inc/db_config.php');
 
