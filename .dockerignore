@@ -3,6 +3,7 @@
 .github
 .vscode
 .vercel
+.env
 node_modules
 vendor
 tmp
