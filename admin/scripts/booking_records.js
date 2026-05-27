@@ -18,44 +18,12 @@ function get_bookings(search = "") {
     xhr.send("get_bookings=1&search=" + encodeURIComponent(search));
 }
 
-let assign_room_form = document.getElementById("assign_room_form");
-
 function assign_room(id) {
-    assign_room_form.elements["booking_id"].value = id;
+    let form = document.getElementById("assign_room_form");
+    if (form) {
+        form.elements["booking_id"].value = id;
+    }
 }
-
-assign_room_form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    let data = new FormData();
-    data.append("room_no", assign_room_form.elements["room_no"].value);
-    data.append("booking_id", assign_room_form.elements["booking_id"].value);
-    data.append("assign_room", "");
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "ajax/new_bookings.php", true);
-    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-    xhr.onload = function () {
-        var myModal = document.getElementById("assign-room");
-        var modal = bootstrap.Modal.getInstance(myModal);
-        modal.hide();
-        let resp = (this.responseText || "").trim();
-        if (resp === "1") {
-            alert("Room number assigned! Booking finalized.");
-            assign_room_form.reset();
-            get_bookings();
-        } else if (resp === "email_failed_ok") {
-            alert("Room assigned. Confirmation email could not be sent.");
-            assign_room_form.reset();
-            get_bookings();
-        } else if (resp === "not_logged_in") {
-            alert("Session expired. Please log in again.");
-            window.location.href = "index.php";
-        } else {
-            console.error("Assign room unexpected response:", resp);
-            alert(resp ? "Could not assign room: " + resp : "Could not assign room. Check that MySQL is running in XAMPP.");
-        }
-    };
-    xhr.send(data);
-});
 
 function cancel_booking(id) {
     if (confirm("Are you sure, you want to cancel this booking?")) {
@@ -87,6 +55,46 @@ function cancel_booking(id) {
     }
 }
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
     get_bookings();
-};
+
+    let assign_room_form = document.getElementById("assign_room_form");
+
+    if (!assign_room_form) {
+        console.warn("assign_room_form not found on this page — assign room feature disabled.");
+        return;
+    }
+
+    assign_room_form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let data = new FormData();
+        data.append("room_no", assign_room_form.elements["room_no"].value);
+        data.append("booking_id", assign_room_form.elements["booking_id"].value);
+        data.append("assign_room", "");
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "ajax/new_bookings.php", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onload = function () {
+            var myModal = document.getElementById("assign-room");
+            var modal = bootstrap.Modal.getInstance(myModal);
+            if (modal) modal.hide();
+            let resp = (this.responseText || "").trim();
+            if (resp === "1") {
+                alert("Room number assigned! Booking finalized.");
+                assign_room_form.reset();
+                get_bookings();
+            } else if (resp === "email_failed_ok") {
+                alert("Room assigned. Confirmation email could not be sent.");
+                assign_room_form.reset();
+                get_bookings();
+            } else if (resp === "not_logged_in") {
+                alert("Session expired. Please log in again.");
+                window.location.href = "index.php";
+            } else {
+                console.error("Assign room unexpected response:", resp);
+                alert(resp ? "Could not assign room: " + resp : "Could not assign room. Check that MySQL is running.");
+            }
+        };
+        xhr.send(data);
+    });
+});
