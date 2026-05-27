@@ -18,20 +18,17 @@ function release_room(booking_id) {
   xhr.send('release_booking&booking_id=' + booking_id);
 }
 
-function get_bookings(search='',page=1)
-{
+function get_bookings(search = "", page = 1) {
   let xhr = new XMLHttpRequest();
-  xhr.open("POST","ajax/booking_records.php",true);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-  xhr.onload = function(){
+  xhr.open("POST", "ajax/booking_records.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+  xhr.onload = function () {
     let data = JSON.parse(this.responseText);
-    document.getElementById('table-data').innerHTML = data.table_data;
-    document.getElementById('table-pagination').innerHTML = data.pagination;
-
-  }
-
-  xhr.send('get_bookings&search='+search+'&page='+page);
+    document.getElementById("table-data").innerHTML = data.table_data;
+    document.getElementById("pagination").innerHTML = data.pagination;
+  };
+  xhr.send("get_bookings&search=" + search + "&page=" + page);
 }
 
 function change_page(page){
