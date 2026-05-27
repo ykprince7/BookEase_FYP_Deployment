@@ -1,8 +1,8 @@
 <?php 
 ob_start();
-require_once(__DIR__ . '/../inc/db_config.php');
-require_once(__DIR__ . '/../inc/essentials.php');
-require_once(__DIR__ . '/../../inc/room_availability.php');
+require_once('/../inc/db_config.php');
+require_once('/../inc/essentials.php');
+require_once('/../../inc/room_availability.php');
 
 date_default_timezone_set("Asia/Kathmandu");
 adminLogin();
