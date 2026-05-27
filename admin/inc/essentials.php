@@ -1,18 +1,11 @@
 <?php
 
 // Frontend data
-// Build a host-aware base URL so images work on localhost, 127.0.0.1, LAN IP, or domain.
 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-// Ensure the root path is always the project folder, not depending on current script nesting.
-$projectDir = dirname(dirname(__DIR__)); // admin/inc -> admin -> BookEase
-$docRoot = rtrim(str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT'] ?? ''), '/') ?: rtrim(str_replace('\\', '/', getcwd()), '/');
-$basePath = str_replace('\\', '/', $projectDir);
-$basePath = str_replace($docRoot, '', $basePath);
-$basePath = '/' . trim($basePath, '/');
-if ($basePath === '/') {
-    $basePath = '';
-}
+
+// Project is at document root on Railway (/var/www/html)
+$basePath = '';
 
 define('SITE_URL', $scheme . '://' . $host . $basePath . '/images/');
 define('ABOUT_IMG_PATH', SITE_URL . 'about/');
