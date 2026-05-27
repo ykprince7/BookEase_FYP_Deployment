@@ -965,7 +965,6 @@ body::before {
 h1, h2,
 .h1, .h2 {
   background: none !important;
-  color: #0f172a !important;
   animation: none !important;
 }
 
