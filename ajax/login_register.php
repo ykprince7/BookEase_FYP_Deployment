@@ -164,11 +164,28 @@ function send_mail($uemail, $token, $type)
 }
 
 if (isset($_GET['test_mail'])) {
-    $user = getenv('MAILTRAP_USER');
-    $pass = getenv('MAILTRAP_PASS');
-    echo "User: $user | Pass: $pass <br>";
-    $result = send_mail('np03cs4a230422@heraldcollege.edu.np', '123456', 'email_confirmation');
-    echo $result ? '✅ Mail sent successfully!' : '❌ Mail failed!';
+    $user = getenv('MAILTRAP_USER') ?: 'f6f8a44d849cf8';
+    $pass = getenv('MAILTRAP_PASS') ?: '5979edcf8bb21d';
+    echo "User: $user | Pass length: " . strlen($pass) . "<br>";
+    
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->SMTPAuth = true;
+        $mail->Username = $user;
+        $mail->Password = $pass;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 2525;
+        $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
+        $mail->addAddress('np03cs4a230422@heraldcollege.edu.np');
+        $mail->Subject = 'Test';
+        $mail->Body = 'Test email';
+        $mail->send();
+        echo '✅ Mail sent!';
+    } catch (Exception $e) {
+        echo '❌ Error: ' . $mail->ErrorInfo;
+    }
     exit;
 }
 
