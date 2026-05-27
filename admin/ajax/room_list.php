@@ -1,6 +1,6 @@
 <?php
-require(__DIR__ .'../inc/db_config.php');
-require(__DIR__ .'../inc/essentials.php');
+require('../inc/db_config.php');
+require('../inc/essentials.php');
 
 if (isset($_GET['get_rooms_for_comparison'])) {
     $res = mysqli_query(
