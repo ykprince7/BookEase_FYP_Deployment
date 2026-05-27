@@ -963,19 +963,22 @@ body::before {
 }
 
 h1,
-h3,
-.h1,
-.h3{
+.h1 {
   background: none !important;
   color: #fff !important;
   animation: none !important;
 }
 
-h2,
-.h2,.h-font{
+h3,
+.h3 {
   background: none !important;
-  color:#0f172a !important;
+  color: #0f172a !important;
   animation: none !important;
+}
+
+/* Card overlay h3 stays white */
+.booking-card-title-overlay h3 {
+  color: #fff !important;
 }
 
 .navbar {
