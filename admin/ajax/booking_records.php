@@ -11,11 +11,10 @@ if(isset($_POST['get_bookings']))
     $frm_data = filteration($_POST);
 
     $limit = 10;
-    $page = isset($frm_data['page']) ? (int)$frm_data['page'] : 1;
-    if($page < 1) $page = 1;
-    $start = ($page-1) * $limit;
+    $page = max(1, (int)($frm_data['page'] ?? 1));
+    $start = ($page - 1) * $limit;
 
-    $search = isset($frm_data['search']) ? trim($frm_data['search']) : '';
+    $search = trim($frm_data['search'] ?? '');
     $search_term = "%{$search}%";
 
     $query = "SELECT bo.*, bd.*, uc.name AS customer_name, uc.phonenum AS user_phone, 
@@ -25,8 +24,8 @@ if(isset($_POST['get_bookings']))
               LEFT JOIN `user_cred` uc ON bo.user_id = uc.id
               LEFT JOIN `rooms` r ON bo.room_id = r.id
               WHERE bo.booking_status IN ('booked', 'completed', 'pending', 'cancelled')
-                AND (bo.order_id LIKE ? OR bd.phonenum LIKE ? OR bd.user_name LIKE ? 
-                     OR uc.phonenum LIKE ? OR uc.name LIKE ? OR r.name LIKE ?) 
+              AND (bo.order_id LIKE ? OR bd.phonenum LIKE ? OR bd.user_name LIKE ? 
+                   OR uc.phonenum LIKE ? OR uc.name LIKE ? OR r.name LIKE ?) 
               ORDER BY bo.booking_id DESC";
 
     $values = [$search_term, $search_term, $search_term, $search_term, $search_term, $search_term];
@@ -34,45 +33,42 @@ if(isset($_POST['get_bookings']))
     $res = select($query, $values, 'ssssss');
     $total_rows = mysqli_num_rows($res);
 
-    $limit_query = $query . " LIMIT ?, ?";
-    $limit_values = array_merge($values, [$start, $limit]);
-    $limit_res = select($limit_query, $limit_values, 'ssssssii');
-
     if($total_rows == 0){
-        echo json_encode(["table_data" => "<tr><td colspan='6' class='text-center py-4'>No Data Found!</td></tr>", "pagination" => ""]);
+        echo json_encode(["table_data" => "<tr><td colspan='6' class='text-center'>No Data Found!</td></tr>", "pagination" => ""]);
         exit;
     }
+
+    $limit_query = $query . " LIMIT ?, ?";
+    $limit_res = select($limit_query, array_merge($values, [$start, $limit]), 'ssssssii');
 
     $i = $start + 1;
     $table_data = "";
 
     while($data = mysqli_fetch_assoc($limit_res))
     {
-        $checkin  = !empty($data['check_in']) ? date("d-m-Y", strtotime($data['check_in'])) : 'N/A';
-        $checkout = !empty($data['check_out']) ? date("d-m-Y", strtotime($data['check_out'])) : 'N/A';
+        $checkin   = !empty($data['check_in']) ? date("d-m-Y", strtotime($data['check_in'])) : 'N/A';
+        $checkout  = !empty($data['check_out']) ? date("d-m-Y", strtotime($data['check_out'])) : 'N/A';
 
-        $user_name = !empty($data['user_name']) ? $data['user_name'] : ($data['customer_name'] ?? 'N/A');
-        $phone     = !empty($data['phonenum']) ? $data['phonenum'] : ($data['user_phone'] ?? 'N/A');
-        $room_name = !empty($data['room_name']) ? $data['room_name'] : ($data['room_name_db'] ?? 'N/A');
-        $price     = !empty($data['price']) ? 'NPR '.$data['price'] : (!empty($data['room_price']) ? 'NPR '.$data['room_price'] : 'N/A');
+        $user_name = $data['user_name'] ?? $data['customer_name'] ?? 'N/A';
+        $phone     = $data['phonenum'] ?? $data['user_phone'] ?? 'N/A';
+        $room_name = $data['room_name'] ?? $data['room_name_db'] ?? 'N/A';
+        $price     = !empty($data['price']) ? 'NPR '.$data['price'] : 
+                     (!empty($data['room_price']) ? 'NPR '.$data['room_price'] : 'N/A');
 
         $status = strtolower(trim($data['booking_status'] ?? ''));
 
-        if ($status == 'booked') {
+        if($status == 'booked'){
             $status_badge = "<span class='badge bg-success'>Booked</span>";
-            $release_btn = "<button onclick='release_room({$data['booking_id']})' class='btn btn-sm btn-outline-success'>Release</button>";
-        } elseif ($status == 'completed') {
+            $release_btn  = "<button onclick='release_room({$data['booking_id']})' class='btn btn-sm btn-outline-success'>Release</button>";
+        } elseif($status == 'completed'){
             $status_badge = "<span class='badge bg-secondary'>Released</span>";
-            $release_btn = "";
-        } elseif ($status == 'pending') {
+            $release_btn  = "";
+        } elseif($status == 'pending'){
             $status_badge = "<span class='badge bg-warning text-dark'>Pending</span>";
-            $release_btn = "";
-        } elseif ($status == 'cancelled') {
-            $status_badge = "<span class='badge bg-danger'>Cancelled</span>";
-            $release_btn = "";
+            $release_btn  = "";
         } else {
-            $status_badge = "<span class='badge bg-info'>{$data['booking_status']}</span>";
-            $release_btn = "";
+            $status_badge = "<span class='badge bg-info'>".htmlspecialchars($data['booking_status'])."</span>";
+            $release_btn  = "";
         }
 
         $table_data .= "
@@ -94,7 +90,7 @@ if(isset($_POST['get_bookings']))
             <td>{$status_badge}</td>
             <td>{$release_btn}</td>
         </tr>";
-        
+
         $i++;
     }
 
@@ -102,31 +98,19 @@ if(isset($_POST['get_bookings']))
     exit;
 }
 
-// ==================== RELEASE BOOKING ====================
-if (isset($_POST['release_booking']))
+// Release Booking
+if(isset($_POST['release_booking']))
 {
-    $frm_data = filteration($_POST);
-    $booking_id = (int)$frm_data['booking_id'];
+    $booking_id = (int)($_POST['booking_id'] ?? 0);
 
-    $check = select("SELECT booking_id, room_id, check_in, check_out, booking_status 
-                     FROM booking_order WHERE booking_id=? LIMIT 1", [$booking_id], 'i');
+    $check = select("SELECT booking_status FROM booking_order WHERE booking_id=?", [$booking_id], 'i');
 
-    if (mysqli_num_rows($check) === 0) {
-        echo json_encode(['success' => false, 'message' => 'Booking not found.']);
-        exit;
-    }
-
-    $row = mysqli_fetch_assoc($check);
-    $status = strtolower(trim($row['booking_status']));
-
-    if (in_array($status, ['completed', 'cancelled'])) {
-        echo json_encode(['success' => true, 'message' => 'Already processed.']);
+    if(mysqli_num_rows($check) == 0){
+        echo json_encode(['success' => false, 'message' => 'Booking not found']);
         exit;
     }
 
     update("UPDATE booking_order SET booking_status='completed' WHERE booking_id=?", [$booking_id], 'i');
-
-    cancelUnpaidBookingsForDateRange((int)$row['room_id'], $row['check_in'], $row['check_out'], $con);
 
     echo json_encode(['success' => true, 'message' => 'Room released successfully!']);
     exit;
