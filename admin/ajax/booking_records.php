@@ -15,7 +15,7 @@ if(isset($_POST['get_bookings']))
     if($page < 1) $page = 1;
     $start = ($page-1) * $limit;
 
-    $search = isset($frm_data['search']) ? $frm_data['search'] : '';
+    $search = isset($frm_data['search']) ? trim($frm_data['search']) : '';
     $search_term = "%{$search}%";
 
     $query = "SELECT bo.*, bd.*, uc.name AS customer_name, uc.phonenum AS user_phone, 
@@ -25,8 +25,8 @@ if(isset($_POST['get_bookings']))
               LEFT JOIN `user_cred` uc ON bo.user_id = uc.id
               LEFT JOIN `rooms` r ON bo.room_id = r.id
               WHERE bo.booking_status IN ('booked', 'completed', 'pending', 'cancelled')
-              AND (bo.order_id LIKE ? OR bd.phonenum LIKE ? OR bd.user_name LIKE ? 
-                   OR uc.phonenum LIKE ? OR uc.name LIKE ? OR r.name LIKE ?) 
+                AND (bo.order_id LIKE ? OR bd.phonenum LIKE ? OR bd.user_name LIKE ? 
+                     OR uc.phonenum LIKE ? OR uc.name LIKE ? OR r.name LIKE ?) 
               ORDER BY bo.booking_id DESC";
 
     $values = [$search_term, $search_term, $search_term, $search_term, $search_term, $search_term];
@@ -34,11 +34,12 @@ if(isset($_POST['get_bookings']))
     $res = select($query, $values, 'ssssss');
     $total_rows = mysqli_num_rows($res);
 
-    $limit_query = $query . " LIMIT $start, $limit";
-    $limit_res = select($limit_query, $values, 'ssssss');
+    $limit_query = $query . " LIMIT ?, ?";
+    $limit_values = array_merge($values, [$start, $limit]);
+    $limit_res = select($limit_query, $limit_values, 'ssssssii');
 
     if($total_rows == 0){
-        echo json_encode(["table_data"=>"<tr><td colspan='6' class='text-center'>No Data Found!</td></tr>", "pagination"=>'']);
+        echo json_encode(["table_data" => "<tr><td colspan='6' class='text-center py-4'>No Data Found!</td></tr>", "pagination" => ""]);
         exit;
     }
 
@@ -49,43 +50,34 @@ if(isset($_POST['get_bookings']))
     {
         $checkin  = !empty($data['check_in']) ? date("d-m-Y", strtotime($data['check_in'])) : 'N/A';
         $checkout = !empty($data['check_out']) ? date("d-m-Y", strtotime($data['check_out'])) : 'N/A';
-        $booked   = !empty($data['datentime']) ? date("d-m-Y", strtotime($data['datentime'])) : 'N/A';
 
-        $user_name = !empty($data['user_name']) ? $data['user_name'] : 
-                    (!empty($data['customer_name']) ? $data['customer_name'] : 'N/A');
-        $phone     = !empty($data['phonenum']) ? $data['phonenum'] : 
-                    (!empty($data['user_phone']) ? $data['user_phone'] : 'N/A');
-        $room_name = !empty($data['room_name']) ? $data['room_name'] : 
-                    (!empty($data['room_name_db']) ? $data['room_name_db'] : 'N/A');
-        $price     = !empty($data['price']) ? 'NPR '.$data['price'] : 
-                    (!empty($data['room_price']) ? 'NPR '.$data['room_price'] : 'N/A');
+        $user_name = !empty($data['user_name']) ? $data['user_name'] : ($data['customer_name'] ?? 'N/A');
+        $phone     = !empty($data['phonenum']) ? $data['phonenum'] : ($data['user_phone'] ?? 'N/A');
+        $room_name = !empty($data['room_name']) ? $data['room_name'] : ($data['room_name_db'] ?? 'N/A');
+        $price     = !empty($data['price']) ? 'NPR '.$data['price'] : (!empty($data['room_price']) ? 'NPR '.$data['room_price'] : 'N/A');
 
-        $status = strtolower(trim($data['booking_status']));
+        $status = strtolower(trim($data['booking_status'] ?? ''));
 
         if ($status == 'booked') {
             $status_badge = "<span class='badge bg-success'>Booked</span>";
             $release_btn = "<button onclick='release_room({$data['booking_id']})' class='btn btn-sm btn-outline-success'>Release</button>";
-        } 
-        elseif ($status == 'completed') {
+        } elseif ($status == 'completed') {
             $status_badge = "<span class='badge bg-secondary'>Released</span>";
             $release_btn = "";
-        } 
-        elseif ($status == 'pending') {
+        } elseif ($status == 'pending') {
             $status_badge = "<span class='badge bg-warning text-dark'>Pending</span>";
             $release_btn = "";
-        } 
-        elseif ($status == 'cancelled') {
+        } elseif ($status == 'cancelled') {
             $status_badge = "<span class='badge bg-danger'>Cancelled</span>";
             $release_btn = "";
-        } 
-        else {
+        } else {
             $status_badge = "<span class='badge bg-info'>{$data['booking_status']}</span>";
             $release_btn = "";
         }
 
         $table_data .= "
         <tr>
-            <td>$i</td>
+            <td>{$i}</td>
             <td>
                 <span class='badge bg-primary'>#{$data['order_id']}</span><br>
                 <b>{$user_name}</b><br>
@@ -102,18 +94,11 @@ if(isset($_POST['get_bookings']))
             <td>{$status_badge}</td>
             <td>{$release_btn}</td>
         </tr>";
-
+        
         $i++;
     }
 
-    // Pagination
-    $pagination = "";
-    if($total_rows > $limit){
-        $total_pages = ceil($total_rows / $limit);
-        // ... (add your pagination HTML here if needed)
-    }
-
-    echo json_encode(["table_data" => $table_data, "pagination" => $pagination]);
+    echo json_encode(["table_data" => $table_data, "pagination" => ""]);
     exit;
 }
 
@@ -124,31 +109,24 @@ if (isset($_POST['release_booking']))
     $booking_id = (int)$frm_data['booking_id'];
 
     $check = select("SELECT booking_id, room_id, check_in, check_out, booking_status 
-                     FROM booking_order WHERE booking_id=? LIMIT 1", 
-                    [$booking_id], 'i');
+                     FROM booking_order WHERE booking_id=? LIMIT 1", [$booking_id], 'i');
 
     if (mysqli_num_rows($check) === 0) {
         echo json_encode(['success' => false, 'message' => 'Booking not found.']);
         exit;
     }
 
-    $booking_row = mysqli_fetch_assoc($check);
-    $status = strtolower(trim($booking_row['booking_status']));
+    $row = mysqli_fetch_assoc($check);
+    $status = strtolower(trim($row['booking_status']));
 
     if (in_array($status, ['completed', 'cancelled'])) {
-        echo json_encode(['success' => true, 'message' => 'Booking already processed.']);
+        echo json_encode(['success' => true, 'message' => 'Already processed.']);
         exit;
     }
 
     update("UPDATE booking_order SET booking_status='completed' WHERE booking_id=?", [$booking_id], 'i');
 
-    // Update room availability
-    cancelUnpaidBookingsForDateRange(
-        (int)$booking_row['room_id'],
-        $booking_row['check_in'],
-        $booking_row['check_out'],
-        $con
-    );
+    cancelUnpaidBookingsForDateRange((int)$row['room_id'], $row['check_in'], $row['check_out'], $con);
 
     echo json_encode(['success' => true, 'message' => 'Room released successfully!']);
     exit;
