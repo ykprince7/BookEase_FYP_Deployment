@@ -10,8 +10,8 @@ if (!empty($_SESSION['welcome_bonus_awarded'])) {
 }
 
 // Load Database Configuration (Railway)
-require(__DIR__ . '/admin/inc/db_config.php');
-require(__DIR__ . '/admin/inc/essentials.php');
+require(__DIR__ . '/db_config.php');
+require(__DIR__ . '/essentials.php');
 
 $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
 $settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
