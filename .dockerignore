@@ -17,4 +17,3 @@ composer.lock
 
 # Temporary files
 tmp_*.*
-test_*.php
