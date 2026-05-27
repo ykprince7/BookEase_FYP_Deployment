@@ -10,7 +10,10 @@
     $frm_data = filteration($_POST);
 
     $limit = 10;
-    $page = $frm_data['page'];
+    $page = isset($frm_data['page']) ? (int)$frm_data['page'] : 1;
+    if($page < 1){
+      $page = 1;
+  }
     $start = ($page-1) * $limit;
 
     $query = "SELECT bo.*, bd.*, uc.name AS customer_name, uc.phonenum AS user_phone, r.name AS room_name_db, r.price AS room_price FROM `booking_order` bo
@@ -26,7 +29,8 @@
       AND (bo.order_id LIKE ? OR bd.phonenum LIKE ? OR bd.user_name LIKE ? OR uc.phonenum LIKE ? OR uc.name LIKE ? OR r.name LIKE ?) 
       ORDER BY bo.booking_id DESC";
 
-    $search_term = "%$frm_data[search]%";
+$search = isset($frm_data['search']) ? $frm_data['search'] : '';
+$search_term = "%{$search}%";
     $res = select($query,[$search_term,$search_term,$search_term,$search_term,$search_term,$search_term],'ssssss');
     
     $limit_query = $query ." LIMIT $start,$limit";
@@ -45,61 +49,191 @@
 
     while($data = mysqli_fetch_assoc($limit_res))
     {
-      $date = date("d-m-Y",strtotime($data['datentime']));
-      $checkin  = !empty($data['check_in'])  ? date("d-m-Y", strtotime($data['check_in']))  : 'N/A';
-      $checkout = !empty($data['check_out']) ? date("d-m-Y", strtotime($data['check_out'])) : 'N/A';
-      $user_name = !empty($data['user_name']) ? $data['user_name'] : (!empty($data['customer_name']) ? $data['customer_name'] : 'N/A');
-      $phonenum = !empty($data['phonenum']) ? $data['phonenum'] : (!empty($data['user_phone']) ? $data['user_phone'] : 'N/A');
-      $room_name = !empty($data['room_name']) ? $data['room_name'] : (!empty($data['room_name_db']) ? $data['room_name_db'] : 'N/A');
-      $price = !empty($data['price']) ? 'NPR'.$data['price'] : (!empty($data['room_price']) ? 'NPR'.$data['room_price'] : 'N/A');
-      $amount = !empty($data['trans_amt']) ? $data['trans_amt'] : 'N/A';
-      $currency = !empty($data['currency']) ? $data['currency'] : '';
-
-      if ($data['booking_status'] == 'booked') {
-        $status_badge = "<span class='badge bg-success'>Checked In</span>";
-      } elseif ($data['booking_status'] == 'completed') {
-        $status_badge = "<span class='badge bg-secondary'>Released</span>";
-      } elseif ($data['booking_status'] == 'cancelled') {
-        $status_badge = "<span class='badge bg-danger'>Cancelled</span>";
-      } else {
-        $status_badge = "<span class='badge bg-warning text-dark'>$data[booking_status]</span>";
-      }
-
-      $release_btn = ($data['booking_status'] === 'booked')
-        ? "<button type='button' onclick='release_room($data[booking_id])' class='btn btn-admin-icon btn-admin-icon--neutral shadow-none' title='Release room — free slot for new bookings'><i class='bi bi-door-open' aria-hidden='true'></i></button>"
-        : "";
-
-      $table_data .= "
+        $date = !empty($data['datentime']) 
+            ? date("d-m-Y", strtotime($data['datentime'])) 
+            : 'N/A';
+    
+        $checkin = !empty($data['check_in']) 
+            ? date("d-m-Y", strtotime($data['check_in'])) 
+            : 'N/A';
+    
+        $checkout = !empty($data['check_out']) 
+            ? date("d-m-Y", strtotime($data['check_out'])) 
+            : 'N/A';
+    
+        $user_name = !empty($data['user_name']) 
+            ? $data['user_name'] 
+            : (!empty($data['customer_name']) ? $data['customer_name'] : 'N/A');
+    
+        $phonenum = !empty($data['phonenum']) 
+            ? $data['phonenum'] 
+            : (!empty($data['user_phone']) ? $data['user_phone'] : 'N/A');
+    
+        $room_name = !empty($data['room_name']) 
+            ? $data['room_name'] 
+            : (!empty($data['room_name_db']) ? $data['room_name_db'] : 'N/A');
+    
+        $price = !empty($data['price']) 
+            ? 'NPR '.$data['price'] 
+            : (!empty($data['room_price']) ? 'NPR '.$data['room_price'] : 'N/A');
+    
+        $amount = !empty($data['trans_amt']) 
+            ? $data['trans_amt'] 
+            : 'N/A';
+    
+        $currency = !empty($data['currency']) 
+            ? $data['currency'] 
+            : '';
+    
+        // STATUS BADGE
+    
+        $status = strtolower(trim($data['booking_status']));
+    
+        if ($status == 'booked') {
+    
+            $status_badge = "
+                <span class='badge bg-success'>
+                    Checked In
+                </span>
+            ";
+    
+        } 
+        elseif ($status == 'completed') {
+    
+            $status_badge = "
+                <span class='badge bg-secondary'>
+                    Released
+                </span>
+            ";
+    
+        } 
+        elseif ($status == 'cancelled') {
+    
+            $status_badge = "
+                <span class='badge bg-danger'>
+                    Cancelled
+                </span>
+            ";
+    
+        } 
+        elseif ($status == 'pending') {
+    
+            $status_badge = "
+                <span class='badge bg-warning text-dark'>
+                    Pending
+                </span>
+            ";
+    
+        } 
+        else {
+    
+            $status_badge = "
+                <span class='badge bg-info text-dark'>
+                    {$data['booking_status']}
+                </span>
+            ";
+        }
+    
+        // RELEASE BUTTON
+    
+        $release_btn = "";
+    
+        if ($status == 'booked') {
+    
+            $release_btn = "
+                <button 
+                    type='button'
+                    onclick='release_room({$data['booking_id']})'
+                    class='btn btn-admin-icon btn-admin-icon--neutral shadow-none'
+                    title='Release room — free slot for new bookings'>
+    
+                    <i class='bi bi-door-open' aria-hidden='true'></i>
+    
+                </button>
+            ";
+        }
+    
+        // TABLE ROW
+    
+        $table_data .= "
+    
         <tr>
-          <td>$i</td>
-          <td>
-            <span class='badge bg-primary'>Order: $data[order_id]</span>
-            <br><b>Name:</b> $user_name
-            <br><b>Phone:</b> $phonenum
-          </td>
-          <td>
-            <b>Room:</b> $room_name
-            <br><b>Price:</b> $price
-          </td>
-          <td>
-            <b>Check-in:</b> $checkin
-            <br><b>Check-out:</b> $checkout
-            <br><b>Paid:</b> $amount $currency
-            <br><b>Booked:</b> $date
-          </td>
-          <td>$status_badge</td>
-          <td>
-            <div class='admin-action-group'>
-              <button type='button' onclick='download($data[booking_id])' class='btn btn-admin-icon btn-admin-icon--success shadow-none' title='Download PDF'>
-                <i class='bi bi-download' aria-hidden='true'></i>
-              </button>
-              $release_btn
-            </div>
-          </td>
+    
+            <td>$i</td>
+    
+            <td>
+    
+                <span class='badge bg-primary'>
+                    Order: {$data['order_id']}
+                </span>
+    
+                <br>
+    
+                <b>Name:</b> {$user_name}
+    
+                <br>
+    
+                <b>Phone:</b> {$phonenum}
+    
+            </td>
+    
+            <td>
+    
+                <b>Room:</b> {$room_name}
+    
+                <br>
+    
+                <b>Price:</b> {$price}
+    
+            </td>
+    
+            <td>
+    
+                <b>Check-in:</b> {$checkin}
+    
+                <br>
+    
+                <b>Check-out:</b> {$checkout}
+    
+                <br>
+    
+                <b>Paid:</b> {$amount} {$currency}
+    
+                <br>
+    
+                <b>Booked:</b> {$date}
+    
+            </td>
+    
+            <td>
+                {$status_badge}
+            </td>
+    
+            <td>
+    
+                <div class='admin-action-group'>
+    
+                    <button 
+                        type='button'
+                        onclick='download({$data['booking_id']})'
+                        class='btn btn-admin-icon btn-admin-icon--success shadow-none'
+                        title='Download PDF'>
+    
+                        <i class='bi bi-download' aria-hidden='true'></i>
+    
+                    </button>
+    
+                    {$release_btn}
+    
+                </div>
+    
+            </td>
+    
         </tr>
-      ";
-
-      $i++;
+    
+        ";
+    
+        $i++;
     }
 
     $pagination = "";
