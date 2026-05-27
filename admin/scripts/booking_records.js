@@ -1,83 +1,92 @@
-function release_room(booking_id)
-{
-    if (!confirm('Release this room?\n\nThis will mark the booking as completed and free up the room slot for new bookings. This cannot be undone.')) {
-        return;
-    }
-
-    fetch('ajax/booking_records.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'release_booking=1&booking_id=' + booking_id
-    })
-    .then(response => response.text())
-    .then(res => {
-        if (res.trim() === '1') {
-            alert('Room released successfully!');
-            get_bookings(document.getElementById('search_input').value);
-        } else {
-            alert('Failed to release room. Please try again.');
-        }
-    })
-    .catch(err => {
-        console.error('Release error:', err);
-        alert('Something went wrong! Please check console.');
-    });
-}
-
-function get_bookings(search = "", page = 1)
-{
+function get_bookings(search = "") {
     let xhr = new XMLHttpRequest();
-
-    xhr.open("POST", "ajax/booking_records.php", true);
+    xhr.open("POST", "ajax/new_bookings.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onload = function ()
-    {
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    xhr.onload = function () {
         try {
             let data = JSON.parse(this.responseText);
-
-            const tableBody      = document.getElementById("table-data");
-            const paginationEl   = document.getElementById("table-pagination"); // fixed ID
-
-            tableBody.innerHTML = data.table_data ||
-                "<tr><td colspan='6' class='text-center py-4'>No Data Found!</td></tr>";
-
-            if (paginationEl && data.pagination) {
-                paginationEl.innerHTML = data.pagination;
-            }
-
+            document.getElementById("table-data").innerHTML = data.table_data ||
+                "<tr><td colspan='5' class='text-center py-4'>No Data Found!</td></tr>";
         } catch(e) {
             console.error("Parse error:", e);
             console.log("Raw response:", this.responseText);
             document.getElementById("table-data").innerHTML =
-                "<tr><td colspan='6' class='text-center text-danger'>Error loading data.</td></tr>";
+                "<tr><td colspan='5' class='text-center text-danger'>Error loading data.</td></tr>";
         }
     };
+    xhr.send("get_bookings=1&search=" + encodeURIComponent(search));
+}
 
-    xhr.onerror = function() {
-        console.error("Network error occurred");
-        document.getElementById("table-data").innerHTML =
-            "<tr><td colspan='6' class='text-center text-danger'>Network error. Please try again.</td></tr>";
+let assign_room_form = document.getElementById("assign_room_form");
+
+function assign_room(id) {
+    assign_room_form.elements["booking_id"].value = id;
+}
+
+assign_room_form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let data = new FormData();
+    data.append("room_no", assign_room_form.elements["room_no"].value);
+    data.append("booking_id", assign_room_form.elements["booking_id"].value);
+    data.append("assign_room", "");
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "ajax/new_bookings.php", true);
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    xhr.onload = function () {
+        var myModal = document.getElementById("assign-room");
+        var modal = bootstrap.Modal.getInstance(myModal);
+        modal.hide();
+        let resp = (this.responseText || "").trim();
+        if (resp === "1") {
+            alert("Room number assigned! Booking finalized.");
+            assign_room_form.reset();
+            get_bookings();
+        } else if (resp === "email_failed_ok") {
+            alert("Room assigned. Confirmation email could not be sent.");
+            assign_room_form.reset();
+            get_bookings();
+        } else if (resp === "not_logged_in") {
+            alert("Session expired. Please log in again.");
+            window.location.href = "index.php";
+        } else {
+            console.error("Assign room unexpected response:", resp);
+            alert(resp ? "Could not assign room: " + resp : "Could not assign room. Check that MySQL is running in XAMPP.");
+        }
     };
+    xhr.send(data);
+});
 
-    xhr.send(
-        "get_bookings=1&search=" + encodeURIComponent(search) + "&page=" + page
-    );
+function cancel_booking(id) {
+    if (confirm("Are you sure, you want to cancel this booking?")) {
+        let data = new FormData();
+        data.append("booking_id", id);
+        data.append("cancel_booking", "");
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "ajax/new_bookings.php", true);
+        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+        xhr.onload = function () {
+            let resp = this.responseText.trim();
+            if (resp === "not_logged_in") {
+                alert("Session expired. Please login again.");
+                window.location.href = "index.php";
+                return;
+            }
+            if (resp == 1) {
+                alert("Booking Cancelled!");
+                get_bookings();
+            } else if (resp == "Email failed but booking cancelled") {
+                alert("Booking cancelled (email failed).");
+                get_bookings();
+            } else {
+                console.error("Cancel booking unexpected response:", resp);
+                alert("Server Down! (debug: " + resp + ")");
+            }
+        };
+        xhr.send(data);
+    }
 }
 
-function change_page(page)
-{
-    get_bookings(document.getElementById('search_input').value, page);
-}
-
-function download(id)
-{
-    window.location.href = 'generate_pdf.php?gen_pdf&id=' + id;
-}
-
-window.onload = function ()
-{
+window.onload = function () {
     get_bookings();
 };
