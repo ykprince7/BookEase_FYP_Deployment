@@ -1,13 +1,6 @@
 <?php
-function listFiles($dir, $indent = 0) {
-    $files = scandir($dir);
-    foreach ($files as $file) {
-        if ($file === '.' || $file === '..') continue;
-        echo str_repeat('&nbsp;', $indent * 4) . $file . '<br>';
-        if (is_dir($dir . '/' . $file) && $indent < 3) {
-            listFiles($dir . '/' . $file, $indent + 1);
-        }
-    }
-}
-listFiles('/var/www/html');
+$file = '/var/www/html/admin/ajax/dashboard.php';
+echo file_exists($file) ? 'EXISTS: ' . $file : 'NOT FOUND: ' . $file;
+echo '<br>';
+echo 'Document root: ' . $_SERVER['DOCUMENT_ROOT'];
 ?>
