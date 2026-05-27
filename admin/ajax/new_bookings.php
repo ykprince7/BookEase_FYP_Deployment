@@ -118,6 +118,27 @@ if (isset($_POST['get_bookings'])) {
 if (isset($_POST['assign_room'])) {
     $frm_data = filteration($_POST);
 
+    // DEBUG: log incoming values
+    error_log("assign_room called | booking_id: " . $frm_data['booking_id'] . " | room_no: " . $frm_data['room_no']);
+
+    // DEBUG: check if booking exists and show its current state
+    $check = select(
+        "SELECT bo.booking_id, bo.arrival, bo.booking_status, bd.room_no
+         FROM booking_order bo
+         LEFT JOIN booking_details bd ON bo.booking_id = bd.booking_id
+         WHERE bo.booking_id = ?",
+        [$frm_data['booking_id']], 'i'
+    );
+
+    if (!$check || mysqli_num_rows($check) == 0) {
+        echo json_encode(['debug' => 'booking_id not found in DB', 'booking_id' => $frm_data['booking_id']]);
+        exit;
+    }
+
+    $check_row = mysqli_fetch_assoc($check);
+    error_log("DB row found: " . json_encode($check_row));
+
+    // Fetch full booking data for email
     $query = "SELECT bo.*, bd.*, uc.email FROM `booking_order` bo
               INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
               INNER JOIN `user_cred` uc ON bo.user_id = uc.id
@@ -125,11 +146,14 @@ if (isset($_POST['assign_room'])) {
     $res          = select($query, [$frm_data['booking_id']], 'i');
     $booking_data = mysqli_fetch_assoc($res);
 
-    $query  = "UPDATE `booking_order` bo INNER JOIN `booking_details` bd
-               ON bo.booking_id = bd.booking_id
-               SET bo.arrival = ?, bo.rate_review = ?, bd.room_no = ?
-               WHERE bo.booking_id = ?";
-    $res = update($query, [1, 0, $frm_data['room_no'], $frm_data['booking_id']], 'iisi');
+    // Run the update
+    $update_query = "UPDATE `booking_order` bo INNER JOIN `booking_details` bd
+                     ON bo.booking_id = bd.booking_id
+                     SET bo.arrival = ?, bo.rate_review = ?, bd.room_no = ?
+                     WHERE bo.booking_id = ?";
+    $res = update($update_query, [1, 0, $frm_data['room_no'], $frm_data['booking_id']], 'iisi');
+
+    error_log("update() result: " . var_export($res, true));
 
     if ($res > 0) {
         $subject = "Booking Confirmed - Order #" . $booking_data['order_id'];
@@ -156,7 +180,13 @@ if (isset($_POST['assign_room'])) {
 
         echo send_booking_mail($booking_data['email'], $subject, $content) ? "1" : "email_failed_ok";
     } else {
-        echo "0";
+        // DEBUG: return detailed info instead of plain "0"
+        echo json_encode([
+            'debug'      => 'update affected 0 rows',
+            'booking_id' => $frm_data['booking_id'],
+            'room_no'    => $frm_data['room_no'],
+            'db_state'   => $check_row
+        ]);
     }
     exit;
 }
@@ -164,6 +194,9 @@ if (isset($_POST['assign_room'])) {
 // CANCEL BOOKING
 if (isset($_POST['cancel_booking'])) {
     $frm_data = filteration($_POST);
+
+    // DEBUG: log incoming values
+    error_log("cancel_booking called | booking_id: " . $frm_data['booking_id']);
 
     $query = "SELECT bo.*, bd.*, uc.email FROM `booking_order` bo
               INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
@@ -174,6 +207,8 @@ if (isset($_POST['cancel_booking'])) {
 
     $query  = "UPDATE `booking_order` SET `booking_status`=?, `refund`=? WHERE `booking_id`=?";
     $res = update($query, ['cancelled', 0, $frm_data['booking_id']], 'sii');
+
+    error_log("cancel update() result: " . var_export($res, true));
 
     if ($res) {
         $subject = "Booking Cancelled - Order #" . $booking_data['order_id'];
