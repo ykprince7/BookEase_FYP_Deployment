@@ -962,17 +962,18 @@ body::before {
   background: none !important;
 }
 
-h1,
-.h1 {
+h1, h2,
+.h1, .h2 {
   background: none !important;
-  color: #fff !important;
+  color: #0f172a !important;
   animation: none !important;
 }
 
 h3,
 .h3 {
   background: none !important;
-  color: #0f172a !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
   animation: none !important;
 }
 
