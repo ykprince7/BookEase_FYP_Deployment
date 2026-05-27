@@ -1,4 +1,6 @@
 <?php
+if (defined('BOOKEASE_ESSENTIALS_LOADED')) return;
+define('BOOKEASE_ESSENTIALS_LOADED', true);
 
 // Frontend data
 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';

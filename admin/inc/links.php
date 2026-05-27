@@ -1,14 +1,16 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 date_default_timezone_set("Asia/Kathmandu");
 
 // Flash welcome bonus
-$welcome_bonus_points = 0;
-if (!empty($_SESSION['welcome_bonus_awarded'])) {
-    $welcome_bonus_points = (int) $_SESSION['welcome_bonus_awarded'];
-    unset($_SESSION['welcome_bonus_awarded']);
+if (!defined('BOOKEASE_DB_CONFIG_LOADED')) {
+    require(__DIR__ . '/db_config.php');
 }
-
+if (!defined('BOOKEASE_ESSENTIALS_LOADED')) {
+    require(__DIR__ . '/essentials.php');
+}
 // Load Database Configuration (Railway)
 require(__DIR__ . '/db_config.php');
 require(__DIR__ . '/essentials.php');

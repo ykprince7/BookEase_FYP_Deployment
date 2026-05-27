@@ -163,6 +163,15 @@ function send_mail($uemail, $token, $type)
     }
 }
 
+if (isset($_GET['test_mail'])) {
+    $user = getenv('MAILTRAP_USER');
+    $pass = getenv('MAILTRAP_PASS');
+    echo "User: $user | Pass: $pass <br>";
+    $result = send_mail('np03cs4a230422@heraldcollege.edu.np', '123456', 'email_confirmation');
+    echo $result ? '✅ Mail sent successfully!' : '❌ Mail failed!';
+    exit;
+}
+
 function is_valid_phone($phone)
 {
     // Remove any non-numeric characters
