@@ -1,7 +1,6 @@
 <?php 
-
-  require('__DIR__../inc/db_config.php');
-  require('__DIR__../inc/essentials.php');
+  require(__DIR__ . '/../inc/db_config.php');
+  require(__DIR__ . '/../inc/essentials.php');
   adminLogin();
 
   function period_condition($period, $column = 'datentime')
