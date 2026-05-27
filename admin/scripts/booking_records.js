@@ -11,11 +11,13 @@ function release_room(booking_id)
         },
         body: 'release_booking=1&booking_id=' + booking_id
     })
-    .then(response => response.json())
+    .then(response => response.text())
     .then(res => {
-        alert(res.message || 'Operation completed');
-        if (res.success) {
+        if (res.trim() === '1') {
+            alert('Room released successfully!');
             get_bookings(document.getElementById('search_input').value);
+        } else {
+            alert('Failed to release room. Please try again.');
         }
     })
     .catch(err => {
@@ -36,8 +38,8 @@ function get_bookings(search = "", page = 1)
         try {
             let data = JSON.parse(this.responseText);
 
-            const tableBody = document.getElementById("table-data");
-            const paginationEl = document.getElementById("pagination");
+            const tableBody      = document.getElementById("table-data");
+            const paginationEl   = document.getElementById("table-pagination"); // fixed ID
 
             tableBody.innerHTML = data.table_data ||
                 "<tr><td colspan='6' class='text-center py-4'>No Data Found!</td></tr>";
@@ -47,7 +49,8 @@ function get_bookings(search = "", page = 1)
             }
 
         } catch(e) {
-            console.error("Parse error:", e, this.responseText);
+            console.error("Parse error:", e);
+            console.log("Raw response:", this.responseText);
             document.getElementById("table-data").innerHTML =
                 "<tr><td colspan='6' class='text-center text-danger'>Error loading data.</td></tr>";
         }
