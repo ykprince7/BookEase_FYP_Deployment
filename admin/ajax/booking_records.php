@@ -17,7 +17,7 @@ require_once(__DIR__ . '/../../inc/room_availability.php');
       LEFT JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
       LEFT JOIN `user_cred` uc ON bo.user_id = uc.id
       LEFT JOIN `rooms` r ON bo.room_id = r.id
-      WHERE ((bo.booking_status='booked' AND bo.arrival=1) 
+      WHERE ((bo.booking_status='booked')
       OR (bo.booking_status='completed')
       OR (bo.booking_status='cancelled' AND bo.refund=1)
       OR (bo.booking_status='payment failed')
@@ -172,6 +172,7 @@ require_once(__DIR__ . '/../../inc/room_availability.php');
       $booking_row['check_out'],
       $con
     );
+
     echo json_encode(['success' => true, 'message' => 'Booking released. Users can now book this room for those dates.']);
   }
 
