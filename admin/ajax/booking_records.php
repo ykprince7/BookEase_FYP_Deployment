@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 require_once(__DIR__ . '/../inc/db_config.php');
 require_once(__DIR__ . '/../inc/essentials.php');
 require_once(__DIR__ . '/../../inc/room_availability.php');
@@ -111,7 +112,7 @@ if(isset($_POST['release_booking']))
     }
 
     update("UPDATE booking_order SET booking_status='completed' WHERE booking_id=?", [$booking_id], 'i');
-
+    ob_clean(); // Discard any junk output before sending JSON
     echo json_encode(['success' => true, 'message' => 'Room released successfully!']);
     exit;
 }
