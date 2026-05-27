@@ -1311,3 +1311,5 @@ Stack trace:
 #2 {main}
   thrown in C:\xampp\htdocs\BookEase\admin\inc\db_config.php on line 15
 [Wed 05/27/2026 14:01:02.82] Done. 
+[Wed 05/27/2026 15:00:00.35] Running exchange rate update... 
+^C

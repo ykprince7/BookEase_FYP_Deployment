@@ -1,8 +1,8 @@
 <?php
   ini_set('display_errors', 1);
   error_reporting(E_ALL);
-  require(__DIR__ . '/inc/essentials.php');
-  require(__DIR__ . '/inc/db_config.php');
+  require_once(__DIR__ . '/inc/essentials.php');
+  require_once(__DIR__ . '/inc/db_config.php');
 
   if (session_status() === PHP_SESSION_NONE) {
     session_start();

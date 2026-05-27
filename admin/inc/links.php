@@ -4,16 +4,8 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 date_default_timezone_set("Asia/Kathmandu");
 
-// Flash welcome bonus
-if (!defined('BOOKEASE_DB_CONFIG_LOADED')) {
-    require(__DIR__ . '/db_config.php');
-}
-if (!defined('BOOKEASE_ESSENTIALS_LOADED')) {
-    require(__DIR__ . '/essentials.php');
-}
-// Load Database Configuration (Railway)
-require(__DIR__ . '/db_config.php');
-require(__DIR__ . '/essentials.php');
+require_once(__DIR__ . '/db_config.php');
+require_once(__DIR__ . '/essentials.php');
 
 $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
 $settings_q = "SELECT * FROM `settings` WHERE `sr_no`=?";
