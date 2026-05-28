@@ -141,12 +141,10 @@ function send_mail($uemail, $token, $type)
         $mail->Username   = $mailtrap_user;  // ✅ was hardcoded
         $mail->Password   = $mailtrap_pass;  // ✅ was hardcoded
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 2525;
+        $mail->Port       = 465;
 
         $mail->SMTPDebug  = 2;
-        $mail->Debugoutput = function($str, $level) {
-            error_log("SMTP Debug: " . $str);
-        };
+        $mail->Debugoutput = 'html';
 
         $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress($uemail);
@@ -176,7 +174,7 @@ if (isset($_GET['test_mail'])) {
         $mail->Username = $user;
         $mail->Password = $pass;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 2525;
+        $mail->Port = 465;
         $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress('np03cs4a230422@heraldcollege.edu.np');
         $mail->Subject = 'Test';

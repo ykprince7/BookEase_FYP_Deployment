@@ -27,6 +27,7 @@ function send_booking_mail($to, $subject, $content) {
         $mail->Password   = $mailtrap_pass;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 2525;
+        $mail->Timeout    = 5; // Stop waiting after 5s (Railway blocks SMTP ports)
 
         $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress($to);
