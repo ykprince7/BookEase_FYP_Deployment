@@ -1,9 +1,12 @@
-<?php 
-require('inc/links.php'); 
-if(!(isset($_SESSION['login']) && $_SESSION['login']==true)){
-  redirect('index.php');
+<?php
+require('admin/inc/db_config.php');
+require('admin/inc/essentials.php');
+
+if(!(isset($_SESSION['login']) && $_SESSION['login'] == true)){
+    header("Location: index.php");
+    exit();
 }
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +14,7 @@ if(!(isset($_SESSION['login']) && $_SESSION['login']==true)){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?php require('inc/header.php'); ?>
+  <?php require('inc/links.php'); ?>
   <title><?php echo htmlspecialchars($settings_r['site_title'], ENT_QUOTES, 'UTF-8'); ?> - My bookings</title>
   <style>
     .bookings-hero {
