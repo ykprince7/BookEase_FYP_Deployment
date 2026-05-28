@@ -6,9 +6,14 @@ require('admin/inc/db_config.php');
 require('admin/inc/essentials.php');
 require('admin/inc/mpdf/vendor/autoload.php');
 
-var_dump($_SESSION['login']);
-var_dump(function_exists('userLogin'));
-exit;
+// Check either user OR admin is logged in
+if (
+    !(isset($_SESSION['login']) && $_SESSION['login'] === true) &&
+    !(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] === true)
+) {
+    header('Location: index.php');
+    exit;
+}
 
   if(isset($_GET['gen_pdf']) && isset($_GET['id']))
   {
