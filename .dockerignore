@@ -5,7 +5,7 @@
 .vercel
 .env
 node_modules
-vendor
+/vendor
 tmp
 logs
 *.log
