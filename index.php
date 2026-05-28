@@ -413,7 +413,7 @@ date_default_timezone_set("Asia/Kathmandu");
 
   <!-- Our Rooms -->
 
-  <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">OUR ROOMS</h2>
+  <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font"  style="color: #0f172a;">OUR ROOMS</h2>
 
   <div class="container">
     <p class="text-center text-muted small mb-4 px-3">
@@ -554,7 +554,7 @@ date_default_timezone_set("Asia/Kathmandu");
 
   <!-- Our Facilities -->
 
-  <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">OUR FACILITIES</h2>
+  <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font"  style="color: #0f172a;">OUR FACILITIES</h2>
 
   <div class="container">
     <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
@@ -583,7 +583,7 @@ date_default_timezone_set("Asia/Kathmandu");
   <section class="home-reviews-section mt-5 pt-4">
     <div class="container">
       <div class="text-center mb-4">
-        <h2 class="fw-bold h-font mb-1">Reviews</h2>
+        <h2 class="fw-bold h-font mb-1"  style="color: #0f172a;">Reviews</h2>
         <p class="text-muted small mb-0">Recent feedback from guests who stayed with us.</p>
       </div>
 
@@ -679,7 +679,7 @@ date_default_timezone_set("Asia/Kathmandu");
 
   <!-- Reach us -->
 
-  <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">REACH US</h2>
+  <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font" style="color: #0f172a;">REACH US</h2>
 
   <div class="container">
     <div class="row">
