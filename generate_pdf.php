@@ -2,7 +2,7 @@
 
   require('admin/inc/essentials.php');
   require('admin/inc/db_config.php');
-  require('admin\inc\mpdf\vendor\autoload.php');
+  require('admin/inc/mpdf/vendor/autoload.php');
 
   adminLogin();
 
