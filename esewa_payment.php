@@ -12,45 +12,47 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
 
 if (isset($_GET['order_id']) && isset($_GET['amount'])) {
     $ORDER_ID   = $_GET['order_id'];
-
-    // eSewa requires amount as a plain decimal with no trailing zeros beyond 2 dp.
-    // e.g. 2000 → "2000.00",  1500.5 → "1500.50"
     $TXN_AMOUNT = number_format((float) $_GET['amount'], 2, '.', '');
 
-    // eSewa test credentials
-    $merchant_code = "EPAYTEST";
-    $secret_key    = "8gBm/:&EnhH.1/q";
-
-    $success_url = "https://" . $_SERVER['HTTP_HOST'] . "/BookEase/esewa_success.php";
-    $failure_url = "https://" . $_SERVER['HTTP_HOST'] . "/BookEase/esewa_failure.php";
-
-    $esewa_url = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
-
+    $merchant_code    = "EPAYTEST";
+    $secret_key       = "8gBm/:&EnhH.1/q";
+    $esewa_url        = "https://rc-epay.esewa.com.np/api/epay/main/v2/form";
     $transaction_uuid = $ORDER_ID;
 
+    // Use APP_URL env var (set in Railway Variables) — fallback to auto-detect for XAMPP
+    $app_url = getenv('APP_URL');
+    if (!$app_url) {
+        $scheme  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        $base    = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+        $app_url = $scheme . '://' . $_SERVER['HTTP_HOST'] . $base;
+    }
+    $app_url = rtrim($app_url, '/');
+
+    $success_url = $app_url . "/esewa_success.php";
+    $failure_url = $app_url . "/esewa_failure.php";
+
+    error_log("eSewa success_url: " . $success_url);
+    error_log("eSewa failure_url: " . $failure_url);
+
     $params = [
-        'amount'                   => $TXN_AMOUNT,
-        'tax_amount'               => '0',
-        'total_amount'             => $TXN_AMOUNT,
-        'transaction_uuid'         => $transaction_uuid,
-        'product_code'             => $merchant_code,
-        'product_service_charge'   => '0',
-        'product_delivery_charge'  => '0',
-        'success_url'              => $success_url,
-        'failure_url'              => $failure_url,
-        'signed_field_names'       => 'total_amount,transaction_uuid,product_code',
+        'amount'                  => $TXN_AMOUNT,
+        'tax_amount'              => '0',
+        'total_amount'            => $TXN_AMOUNT,
+        'transaction_uuid'        => $transaction_uuid,
+        'product_code'            => $merchant_code,
+        'product_service_charge'  => '0',
+        'product_delivery_charge' => '0',
+        'success_url'             => $success_url,
+        'failure_url'             => $failure_url,
+        'signed_field_names'      => 'total_amount,transaction_uuid,product_code',
     ];
 
-    // Signature must use the exact same total_amount string sent in the form
     $string_to_sign = "total_amount=" . $params['total_amount'] .
                       ",transaction_uuid=" . $params['transaction_uuid'] .
                       ",product_code=" . $params['product_code'];
 
     $params['signature'] = base64_encode(hash_hmac('sha256', $string_to_sign, $secret_key, true));
-
-    error_log("eSewa Payment Request - Order ID: " . $ORDER_ID . " | UUID: " . $transaction_uuid . " | Amount: " . $TXN_AMOUNT);
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,9 +100,8 @@ if (isset($_GET['order_id']) && isset($_GET['amount'])) {
     </script>
 </body>
 </html>
-
 <?php
 } else {
     redirect('index.php');
 }
-?> 
+?>
