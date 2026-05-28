@@ -1,6 +1,9 @@
 <?php
-session_start();
 date_default_timezone_set("Asia/Kathmandu");
+// Only start session if one isn't already active
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // One-time flash after welcome bonus
 $welcome_bonus_points = 0;

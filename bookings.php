@@ -2,8 +2,12 @@
 require('admin/inc/db_config.php');
 require('admin/inc/essentials.php');
 
-if(!(isset($_SESSION['login']) && $_SESSION['login'] == true)){
-    header("Location: index.php");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!(isset($_SESSION['login']) && $_SESSION['login'] === true)) {
+    header('Location: index.php');
     exit();
 }
 ?>
@@ -145,13 +149,7 @@ if(!(isset($_SESSION['login']) && $_SESSION['login'] == true)){
 </head>
 <body class="bg-light">
 
-  <?php 
-    require('inc/header.php'); 
-
-    if(!(isset($_SESSION['login']) && $_SESSION['login']==true)){
-      redirect('index.php');
-    }
-  ?>
+<?php require('inc/header.php'); ?>
 
   <div class="container py-4 py-lg-5">
     <div class="bookings-hero mb-4">
