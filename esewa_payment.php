@@ -21,7 +21,6 @@ if (isset($_GET['order_id']) && isset($_GET['amount'])) {
 
     // Use APP_URL env var (set in Railway Variables) — fallback to auto-detect for XAMPP
     $app_url = getenv('APP_URL');
-    die("APP_URL = " . var_export($app_url, true));
     if (!$app_url) {
         $scheme  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
         $base    = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
