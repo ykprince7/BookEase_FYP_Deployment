@@ -1,11 +1,14 @@
 <!-- Generating PDF -->
 <?php 
+  session_start();
+  require('admin/inc/db_config.php');
+  require('admin/inc/essentials.php');
+  require('admin/inc/mpdf/vendor/autoload.php');
 
-  require('inc/essentials.php');
-  require('inc/db_config.php');
-  require('inc/mpdf/vendor/autoload.php');
-
-  adminLogin();
+  if(!(isset($_SESSION['login']) && $_SESSION['login']==true)){
+    header('location: index.php');
+    exit;
+  }
 
   if(isset($_GET['gen_pdf']) && isset($_GET['id']))
   {
@@ -16,11 +19,7 @@
         LEFT JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
         INNER JOIN `user_cred` uc ON bo.user_id = uc.id
         LEFT JOIN `rooms` r ON bo.room_id = r.id
-        WHERE ((bo.booking_status='booked' AND bo.arrival=1) 
-        OR (bo.booking_status='cancelled' AND bo.refund=1)
-        OR (bo.booking_status='payment failed')
-        OR (bo.booking_status='payment_failed')
-        OR (bo.booking_status='pending')) 
+        WHERE bo.booking_status IN ('booked', 'completed', 'cancelled', 'pending', 'payment failed', 'payment_failed')
         AND bo.booking_id = '$frm_data[id]'";
 
       $res = mysqli_query($con,$query);
@@ -30,7 +29,6 @@
         header('location: dashboard.php');
         exit;
       }
-
       $data = mysqli_fetch_assoc($res);
 
       $date = date("h:ia | d-m-Y",strtotime($data['datentime']));
