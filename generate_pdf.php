@@ -1,12 +1,14 @@
 <?php 
- if (session_status() === PHP_SESSION_NONE) {
-  session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 require('admin/inc/db_config.php');
 require('admin/inc/essentials.php');
 require('admin/inc/mpdf/vendor/autoload.php');
 
-userLogin();
+var_dump($_SESSION['login']);
+var_dump(function_exists('userLogin'));
+exit;
 
   if(isset($_GET['gen_pdf']) && isset($_GET['id']))
   {
