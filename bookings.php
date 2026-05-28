@@ -1,14 +1,15 @@
 <?php
-require('admin/inc/db_config.php');
-require('admin/inc/essentials.php');
-
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 
+// Auth check before any output
 if (!(isset($_SESSION['login']) && $_SESSION['login'] === true)) {
-    header('Location: index.php');
-    exit();
+  // Need DB for redirect to work cleanly
+  require('admin/inc/db_config.php');
+  require('admin/inc/essentials.php');
+  header('Location: index.php');
+  exit();
 }
 ?>
 
