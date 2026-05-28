@@ -211,7 +211,7 @@
             if ($data['booking_status'] == 'booked') {
               $status_bg = 'bg-success';
               if ($data['arrival'] == 1) {
-                $btn = "<a href='generate_pdf.php?gen_pdf&id=$bid' class='btn btn-outline-dark btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-download'></i><span>Receipt</span></a>";
+                $btn = "<a href='admin/generate_pdf.php?gen_pdf&id=$bid' class='btn btn-outline-dark btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-download'></i><span>Receipt</span></a>";
                 if ($data['rate_review'] == 0) {
                   $btn .= "<button type='button' onclick='review_room($bid,$rid)' data-bs-toggle='modal' data-bs-target='#reviewModal' class='btn custom-bg text-white btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-star'></i><span>Rate stay</span></button>";
                 }
@@ -223,7 +223,7 @@
               if ($data['refund'] == 0) {
                 $btn = "<span class='badge bg-warning text-dark rounded-pill'>Refund in process</span>";
               } else {
-                $btn = "<a href='generate_pdf.php?gen_pdf&id=$bid' class='btn btn-outline-dark btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-download'></i><span>Receipt</span></a>";
+                $btn = "<a href='admin/generate_pdf.php?gen_pdf&id=$bid' class='btn btn-outline-dark btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-download'></i><span>Receipt</span></a>";
               }
             } else {
               $status_bg = 'bg-warning text-dark';
