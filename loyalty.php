@@ -1,4 +1,5 @@
 <?php
+error_log("POST data: " . print_r($_POST, true));
 session_start(); 
 require('inc/links.php');
 require('inc/header.php');

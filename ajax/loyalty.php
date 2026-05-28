@@ -1,4 +1,3 @@
-<!-- Loyalty Points Redemption  -->
 <?php
 require_once('../admin/inc/db_config.php');
 require_once('../inc/loyalty_points.php');
