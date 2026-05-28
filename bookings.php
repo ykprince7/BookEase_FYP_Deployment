@@ -208,16 +208,16 @@
             $status_label = ucfirst(htmlspecialchars($data['booking_status'], ENT_QUOTES, 'UTF-8'));
             $btn = '';
 
-            if ($data['booking_status'] == 'booked') {
-              $status_bg = 'bg-success';
-              $btn = "<a href='generate_pdf.php?gen_pdf&id=$bid' class='btn btn-outline-dark btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-download'></i><span>Receipt</span></a>";
-              if ($data['arrival'] == 1 && $data['rate_review'] == 0) {
-                  $btn .= "<button type='button' onclick='review_room($bid,$rid)' data-bs-toggle='modal' data-bs-target='#reviewModal' class='btn custom-bg text-white btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-star'></i><span>Rate stay</span></button>";
-              }
-              if ($data['arrival'] == 0) {
-                  $btn .= "<button onclick='cancel_booking($bid)' type='button' class='btn btn-outline-danger btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-x-lg'></i><span>Cancel</span></button>";
-              }
-          } else {
+         if ($data['booking_status'] == 'booked') {
+    $status_bg = 'bg-success';
+    $btn = "<a href='generate_pdf.php?gen_pdf&id=$bid' class='btn btn-outline-dark btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-download'></i><span>Receipt</span></a>";
+    if ($data['arrival'] == 1 && $data['rate_review'] == 0) {
+        $btn .= "<button type='button' onclick='review_room($bid,$rid)' data-bs-toggle='modal' data-bs-target='#reviewModal' class='btn custom-bg text-white btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-star'></i><span>Rate stay</span></button>";
+    }
+    if ($data['arrival'] == 0) {
+        $btn .= "<button onclick='cancel_booking($bid)' type='button' class='btn btn-outline-danger btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-x-lg'></i><span>Cancel</span></button>";
+    }
+} else {
                 $btn = "<button onclick='cancel_booking($bid)' type='button' class='btn btn-outline-danger btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-x-lg'></i><span>Cancel</span></button>";
               }
             } else if ($data['booking_status'] == 'cancelled') {
