@@ -156,7 +156,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] === true)) {
     <div class="bookings-hero mb-4">
       <div class="row align-items-center g-3">
         <div class="col-lg-8">
-          <h2 class="fw-bold h-font mb-2">My bookings</h2>
+          <h2 class="fw-bold h-font mb-2"  style="color: #0f172a;">My bookings</h2>
           <p class="text-muted mb-0 small">View your stays, download receipts, and manage upcoming reservations.</p>
         </div>
         <div class="col-lg-4 text-lg-end">
