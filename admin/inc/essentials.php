@@ -39,7 +39,23 @@ function adminLogin()
     }
 
     if (!(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] === true)) {
-        // Check if it's an AJAX request
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            echo 'not_logged_in';
+            exit;
+        } else {
+            header('Location: index.php');
+            exit;
+        }
+    }
+}
+
+function userLogin()
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (!(isset($_SESSION['login']) && $_SESSION['login'] === true)) {
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             echo 'not_logged_in';
             exit;
@@ -69,14 +85,14 @@ function alert($type,$msg){
 
 function uploadImage($image,$folder)
 {
-    $valid_mime = ['image/jpeg', 'image/png', 'image/webp', 'image/tiff']; // Added TIFF
+    $valid_mime = ['image/jpeg', 'image/png', 'image/webp', 'image/tiff'];
     $img_mime = $image['type'];
 
     if(!in_array($img_mime,$valid_mime)){
-        return 'inv_img'; // Invalid image mime or format
+        return 'inv_img';
     }
     else if(($image['size']/(1024*1024))>2){
-        return 'inv_size'; // Invalid size greater than 2MB
+        return 'inv_size';
     }
     else{
         $ext = pathinfo($image['name'],PATHINFO_EXTENSION);
@@ -134,7 +150,7 @@ function uploadSVGImage($image,$folder)
 
 function uploadUserImage($image)
 {
-    $valid_mime = ['image/jpeg', 'image/png', 'image/webp', 'image/tiff']; // Added TIFF
+    $valid_mime = ['image/jpeg', 'image/png', 'image/webp', 'image/tiff'];
     $img_mime = $image['type'];
 
     if(!in_array($img_mime,$valid_mime)){
@@ -143,7 +159,7 @@ function uploadUserImage($image)
     else
     {
         $ext = pathinfo($image['name'],PATHINFO_EXTENSION);
-        $rname = 'IMG_'.random_int(11111,99999).".".$ext; // Keep original extension
+        $rname = 'IMG_'.random_int(11111,99999).".".$ext;
 
         $img_path = UPLOAD_IMAGE_PATH.USERS_FOLDER.$rname;
 
@@ -155,5 +171,3 @@ function uploadUserImage($image)
         }
     }
 }
-
-?>
