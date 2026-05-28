@@ -1,8 +1,3 @@
-<?php 
-session_start(); 
-var_dump($_SESSION);
-exit;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,9 +131,6 @@ exit;
     .booking-details-toggle i.rotated {
       transform: rotate(180deg);
     }
-    h2{
-      color:#0f172a !important
-    }
   </style>
 </head>
 <body class="bg-light">
@@ -214,14 +206,15 @@ exit;
 
             if ($data['booking_status'] == 'booked') {
               $status_bg = 'bg-success';
-              $btn = "<a href='generate_pdf.php?gen_pdf&id=$bid' class='btn btn-outline-dark btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-download'></i><span>Receipt</span></a>";
-              if ($data['arrival'] == 1 && $data['rate_review'] == 0) {
-                $btn .= "<button type='button' onclick='review_room($bid,$rid)' data-bs-toggle='modal' data-bs-target='#reviewModal' class='btn custom-bg text-white btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-star'></i><span>Rate stay</span></button>";
+              if ($data['arrival'] == 1) {
+                $btn = "<a href='generate_pdf.php?gen_pdf&id=$bid' class='btn btn-outline-dark btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-download'></i><span>Receipt</span></a>";
+                if ($data['rate_review'] == 0) {
+                  $btn .= "<button type='button' onclick='review_room($bid,$rid)' data-bs-toggle='modal' data-bs-target='#reviewModal' class='btn custom-bg text-white btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-star'></i><span>Rate stay</span></button>";
+                }
+              } else {
+                $btn = "<button onclick='cancel_booking($bid)' type='button' class='btn btn-outline-danger btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-x-lg'></i><span>Cancel</span></button>";
               }
-              if ($data['arrival'] == 0) {
-                $btn .= "<button onclick='cancel_booking($bid)' type='button' class='btn btn-outline-danger btn-sm rounded-pill shadow-none d-inline-flex align-items-center justify-content-center'><i class='bi bi-x-lg'></i><span>Cancel</span></button>";
-              }
-            } elseif ($data['booking_status'] == 'cancelled') {
+            } else if ($data['booking_status'] == 'cancelled') {
               $status_bg = 'bg-danger';
               if ($data['refund'] == 0) {
                 $btn = "<span class='badge bg-warning text-dark rounded-pill'>Refund in process</span>";
@@ -347,7 +340,7 @@ HTML;
             window.location.href="bookings.php?cancel_status=true";
           }
           else{
-            alert('Cancellation Failed!');
+            alert('error','Cancellation Failed!');
           }
         }
 
@@ -360,6 +353,7 @@ HTML;
     function review_room(bid,rid){
       review_form.elements['booking_id'].value = bid;
       review_form.elements['room_id'].value = rid;
+      // reset stars to "no rating" on open
       const starsWrapper = document.querySelector('.review-stars');
       if (starsWrapper) {
         const hiddenRating = review_form.elements['rating'];
@@ -378,6 +372,7 @@ HTML;
       }
     }
 
+    // interactive star rating
     (function initStarRating(){
       const starsWrapper = document.querySelector('.review-stars');
       if (!starsWrapper) return;
@@ -437,6 +432,7 @@ HTML;
         });
       });
 
+      // initial state (no rating yet)
       updateVisual(parseInt(hiddenRating.value || '0',10));
     })();
 
@@ -466,19 +462,21 @@ HTML;
           var myModal = document.getElementById('reviewModal');
           var modal = bootstrap.Modal.getInstance(myModal);
           modal.hide();
-          alert('You have already submitted a review for this booking.');
+          alert('error','You have already submitted a review for this booking.');
         }
         else{
           var myModal = document.getElementById('reviewModal');
           var modal = bootstrap.Modal.getInstance(myModal);
           modal.hide();
-          alert('Rating & Review Failed!');
+  
+          alert('error',"Rating & Review Failed!");
         }
       }
 
       xhr.send(data);
     })
 
+    // Toggle booking details (expand/collapse)
     function toggleBookingDetails(button) {
       const detailsDiv = button.nextElementSibling;
       const icon = button.querySelector('i');
@@ -493,6 +491,7 @@ HTML;
         text.textContent = 'View booking details';
       }
     }
+
   </script>
 
 </body>
