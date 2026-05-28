@@ -1,4 +1,7 @@
 <?php
+if (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
 if (defined('BOOKEASE_ESSENTIALS_LOADED')) return;
 define('BOOKEASE_ESSENTIALS_LOADED', true);
 
