@@ -7,8 +7,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
-    redirect('index.php');
+if (!isset($_GET['data'])) {
+    if (!(isset($_SESSION['login']) && $_SESSION['login'] == true)) {
+        redirect('index.php');
+    }
 }
 
 // Get the encoded response data from the query parameter
