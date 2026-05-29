@@ -486,20 +486,22 @@ HTML;
     })
 
     // Toggle booking details (expand/collapse)
-    function toggleBookingDetails(button) {
-      const detailsDiv = button.nextElementSibling;
-      const icon = button.querySelector('i');
-      const text = button.querySelector('span');
-      
-      detailsDiv.classList.toggle('show');
-      icon.classList.toggle('rotated');
-      
-      if (detailsDiv.classList.contains('show')) {
-        text.textContent = 'Hide booking details';
-      } else {
-        text.textContent = 'View booking details';
-      }
-    }
+  function toggleBookingDetails(button) {
+  // Walk up to the card body, then find THIS card's .booking-meta
+  const cardBody = button.closest('.booking-card-body');
+  const detailsDiv = cardBody.querySelector('.booking-meta');
+  const icon = button.querySelector('i');
+  const text = button.querySelector('span');
+  
+  detailsDiv.classList.toggle('show');
+  icon.classList.toggle('rotated');
+  
+  if (detailsDiv.classList.contains('show')) {
+    text.textContent = 'Hide booking details';
+  } else {
+    text.textContent = 'View booking details';
+  }
+}
 
   </script>
 
