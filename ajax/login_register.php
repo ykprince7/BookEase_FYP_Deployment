@@ -88,8 +88,6 @@ function save_remote_user_image($image_url, $sub)
 
 function get_public_site_base_url()
 {
-    // Prefer the host the user actually used (localhost vs 127.0.0.1 vs your domain).
-    // SITE_URL is often fixed to 127.0.0.1 — that breaks links on phones or if you open the site via localhost.
     if (!empty($_SERVER['HTTP_HOST']) && !empty($_SERVER['SCRIPT_NAME'])) {
         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
         $host = $_SERVER['HTTP_HOST'];
@@ -128,7 +126,6 @@ function send_mail($uemail, $token, $type)
         $mailAltBody = "Reset link: $link";
     }
 
-    // ✅ Read from Railway environment variables
     $mailtrap_user = getenv('MAILTRAP_USER') ?: 'f6f8a44d849cf8';
     $mailtrap_pass = getenv('MAILTRAP_PASS') ?: '5979edcf8bb21d';
 
@@ -138,13 +135,15 @@ function send_mail($uemail, $token, $type)
         $mail->isSMTP();
         $mail->Host       = 'sandbox.smtp.mailtrap.io';
         $mail->SMTPAuth   = true;
-        $mail->Username   = $mailtrap_user;  // ✅ was hardcoded
-        $mail->Password   = $mailtrap_pass;  // ✅ was hardcoded
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port       = 465;
+        $mail->Username   = $mailtrap_user;
+        $mail->Password   = $mailtrap_pass;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // ✅ FIXED
+        $mail->Port       = 587;                            // ✅ FIXED
 
-        $mail->SMTPDebug  = 2;
-        $mail->Debugoutput = 'html';
+        $mail->SMTPDebug  = 0; // ✅ silent — no HTML debug output
+        $mail->Debugoutput = function($str, $level) {
+            error_log("SMTP Debug: " . $str);
+        };
 
         $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress($uemail);
@@ -173,8 +172,8 @@ if (isset($_GET['test_mail'])) {
         $mail->SMTPAuth = true;
         $mail->Username = $user;
         $mail->Password = $pass;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // ✅ FIXED
+        $mail->Port = 587;                                  // ✅ FIXED
         $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
         $mail->addAddress('np03cs4a230422@heraldcollege.edu.np');
         $mail->Subject = 'Test';
@@ -189,9 +188,7 @@ if (isset($_GET['test_mail'])) {
 
 function is_valid_phone($phone)
 {
-    // Remove any non-numeric characters
     $clean_phone = preg_replace('/\D/', '', $phone);
-    // Check if exactly 10 digits
     return strlen($clean_phone) === 10 && preg_match('/^[0-9]{10}$/', $clean_phone) === 1;
 }
 
@@ -221,12 +218,10 @@ function is_at_least_18($dob)
 // Registration logic starts here
 
 if (isset($_POST['register'])) {
-    $data = filteration($_POST);  // Using the filteration function defined in db_config.php
+    $data = filteration($_POST);
 
-    // Clean phone number: remove non-numeric characters
     $data['phonenum'] = preg_replace('/\D/', '', $data['phonenum']);
 
-    // Match password and confirm password field
     if ($data['pass'] != $data['cpass']) {
         echo 'pass_mismatch';
         exit;
@@ -242,7 +237,6 @@ if (isset($_POST['register'])) {
         exit;
     }
 
-    // Check if user exists (email or phone)
     $u_exist = select("SELECT * FROM `user_cred` WHERE `email` = ? OR `phonenum` = ? LIMIT 1",
         [$data['email'], $data['phonenum']], "ss");
 
@@ -252,7 +246,6 @@ if (isset($_POST['register'])) {
         exit;
     }
 
-    // Profile picture is optional — use default avatar when none uploaded
     $img = 'default.svg';
     if (!empty($_FILES['profile']['name']) && (int) $_FILES['profile']['error'] === UPLOAD_ERR_OK) {
         $img = uploadUserImage($_FILES['profile']);
@@ -268,16 +261,14 @@ if (isset($_POST['register'])) {
 
     $enc_pass = password_hash($data['pass'], PASSWORD_BCRYPT);
 
-    // OTP-based verification
     $otp = (string) random_int(100000, 999999);
 
-    $otp_expire_date = date("Y-m-d"); // stored as DATE in this project
+    $otp_expire_date = date("Y-m-d", strtotime('+1 day')); // ✅ FIXED: expires tomorrow
     $query = "INSERT INTO `user_cred`(`name`, `email`, `address`, `phonenum`, `pincode`, `dob`, `profile`, `password`, `token`, `t_expire`, `banner_eligible`)
         VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     $values = [$data['name'], $data['email'], $data['address'], $data['phonenum'], $data['pincode'], $data['dob'], $img, $enc_pass, $otp, $otp_expire_date, 1];
 
     if (insert($query, $values, 'ssssssssssi')) {
-        // Send OTP only after the user record is created successfully.
         if (!send_mail($data['email'], $otp, "email_confirmation")) {
             echo 'mail_failed';
             exit;
@@ -410,13 +401,12 @@ if (isset($_POST['forgot_pass'])) {
         } else if ($u_fetch['status'] == 0) {
             echo 'inactive';
         } else {
-            // Send OTP to email for password reset
             $token = (string) random_int(100000, 999999);
 
             if (!send_mail($data['email'], $token, 'account_recovery_otp')) {
                 echo 'mail_failed';
             } else {
-                $date = date("Y-m-d");
+                $date = date("Y-m-d", strtotime('+1 day')); // ✅ FIXED: expires tomorrow
                 $query = mysqli_query($con, "UPDATE `user_cred` SET `token`='$token', `t_expire`='$date' 
                     WHERE `id`='$u_fetch[id]'");
 
