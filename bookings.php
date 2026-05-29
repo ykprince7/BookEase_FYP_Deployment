@@ -36,7 +36,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] === true)) {
       overflow: hidden;
       box-shadow: 0 0.35rem 1.25rem rgba(0,0,0,.06);
       transition: transform .2s ease, box-shadow .2s ease;
-      height: 100%;
+      height: auto;
       display: flex;
       flex-direction: column;
     }
@@ -168,7 +168,7 @@ if (!(isset($_SESSION['login']) && $_SESSION['login'] === true)) {
       <div class="h-line bg-dark mt-3 mb-0" style="margin-left:0;"></div>
     </div>
 
-    <div class="row g-4">
+    <div class="row g-4 align-items-start">
       <?php 
         $query = "SELECT bo.*, bd.*,
           (SELECT ri.image FROM `room_images` ri WHERE ri.room_id = bo.room_id AND ri.thumb = 1 LIMIT 1) AS thumb_image

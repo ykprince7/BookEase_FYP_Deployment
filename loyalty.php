@@ -66,7 +66,7 @@ while($t = mysqli_fetch_assoc($transactions)){
                       <p class="card-text"><?php echo $reward['description']; ?></p>
                       <p class="text-primary mb-3"><?php echo $reward['points_required']; ?> points required</p>
                       <?php if($points_balance >= $reward['points_required']): ?>
-                        <button class="btn btn-primary btn-sm" onclick="redeemPoints(<?php echo $reward['id']; ?>)">
+                        <button class="btn btn-primary btn-sm" onclick="redeemPoints(<?php echo $reward['id']; ?>)" style="font-size: 0.72rem; padding: 0.15rem 0.55rem;">
                           Redeem Now
                         </button>
                       <?php else: ?>
