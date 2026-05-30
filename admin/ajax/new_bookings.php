@@ -6,52 +6,98 @@ require(__DIR__ . '/../inc/db_config.php');
 require(__DIR__ . '/../inc/essentials.php');
 adminLogin();
 
-// PHPMailer via Composer autoloader (same as essentials.php)
-require __DIR__ . '/../../vendor/autoload.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 header('Content-Type: application/json');
 
-function send_booking_mail($to, $subject, $content) {
-    $mailtrap_user = getenv('MAILTRAP_USER') ?: 'f6f8a44d849cf8';
-    $mailtrap_pass = getenv('MAILTRAP_PASS') ?: '5979edcf8bb21d';
+// ── Mailtrap HTTP API (no SMTP — works on Railway) ────────────────────────────
+function send_booking_mail($to, $subject, $content)
+{
+    $api_token = getenv('MAILTRAP_API_TOKEN') ?: '136971d422bb7ec67ebbe3a29cb470d7';
+    $inbox_id  = getenv('MAILTRAP_INBOX_ID')  ?: '4664187';
 
-    $mail = new PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host       = 'sandbox.smtp.mailtrap.io';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = $mailtrap_user;
-        $mail->Password   = $mailtrap_pass;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port       = 465;
-        $mail->Timeout    = 5; // Stop waiting after 5s (Railway blocks SMTP ports)
+    $payload = json_encode([
+        'from'    => ['email' => 'bookease.noreply69@gmail.com', 'name' => 'BookEase'],
+        'to'      => [['email' => $to]],
+        'subject' => $subject,
+        'html'    => $content,
+    ]);
 
-        $mail->setFrom('bookease.noreply69@gmail.com', 'BookEase');
-        $mail->addAddress($to);
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://sandbox.api.mailtrap.io/api/send/$inbox_id");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: Bearer ' . $api_token,
+        'Content-Type: application/json',
+    ]);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    $response = curl_exec($ch);
+    $status   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
 
-        $mail->isHTML(true);
-        $mail->Subject = $subject;
-        $mail->Body    = $content;
-
-        $mail->send();
-        return true;
-    } catch (Exception $e) {
-        error_log("Mailer Error: " . $mail->ErrorInfo);
-        return false;
-    }
+    error_log("Mailtrap API response ($status): " . $response);
+    return $status === 200;
 }
 
-// GET BOOKINGS
+function mail_body($heading, $heading_color, $rows_html, $guest_name, $note = '')
+{
+    return <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background-color:#f4f6f8;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f8;padding:40px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td align="center" style="background:linear-gradient(135deg,#2ec1ac,#1a9e8c);border-radius:12px 12px 0 0;padding:32px 40px;">
+            <h1 style="margin:0;color:#fff;font-size:26px;font-weight:700;">BookEase</h1>
+            <p style="margin:4px 0 0;color:rgba(255,255,255,.8);font-size:13px;">Your trusted hotel booking platform</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#fff;padding:36px 40px;border-left:1px solid #e8ecef;border-right:1px solid #e8ecef;">
+            <h2 style="margin:0 0 6px;color:$heading_color;font-size:20px;font-weight:700;">$heading</h2>
+            <p style="margin:0 0 24px;color:#6b7280;font-size:15px;">Hi $guest_name,</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="border-radius:10px;overflow:hidden;border:1px solid #e8ecef;margin-bottom:24px;">
+              $rows_html
+            </table>
+            $note
+            <p style="margin:0;color:#9ca3af;font-size:13px;">— BookEase Team</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#f8fafb;border:1px solid #e8ecef;border-top:none;border-radius:0 0 12px 12px;padding:20px 40px;text-align:center;">
+            <p style="margin:0;color:#9ca3af;font-size:12px;">This is an automated message. Please do not reply.</p>
+            <p style="margin:6px 0 0;color:#9ca3af;font-size:12px;">&copy; 2026 BookEase. All rights reserved.</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+HTML;
+}
+
+function mail_row($label, $value, $alt = false, $highlight = false)
+{
+    $bg    = $alt ? 'background:#fafafa;' : '';
+    $color = $highlight ? 'color:#2ec1ac;font-weight:700;font-size:15px;' : 'color:#0f172a;font-weight:600;';
+    return "<tr style=\"$bg\">
+        <td style=\"padding:11px 16px;color:#6b7280;font-size:14px;border-bottom:1px solid #f1f5f9;width:42%;\">$label</td>
+        <td style=\"padding:11px 16px;$color font-size:14px;border-bottom:1px solid #f1f5f9;\">$value</td>
+    </tr>";
+}
+
+// ── GET BOOKINGS ──────────────────────────────────────────────────────────────
 if (isset($_POST['get_bookings'])) {
     $frm_data = filteration($_POST);
 
     $query = "SELECT bo.*, bd.*, uc.email FROM `booking_order` bo
               INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
               INNER JOIN `user_cred` uc ON bo.user_id = uc.id
-              WHERE (bo.order_id LIKE ? OR bd.phonenum LIKE ? OR bd.user_name LIKE ?) 
+              WHERE (bo.order_id LIKE ? OR bd.phonenum LIKE ? OR bd.user_name LIKE ?)
               AND (bo.booking_status=? AND bo.arrival=?) ORDER BY bo.booking_id ASC";
 
     $res = select($query, ["%$frm_data[search]%", "%$frm_data[search]%", "%$frm_data[search]%", "booked", 0], 'sssss');
@@ -115,14 +161,12 @@ if (isset($_POST['get_bookings'])) {
     exit;
 }
 
-// ASSIGN ROOM
+// ── ASSIGN ROOM ───────────────────────────────────────────────────────────────
 if (isset($_POST['assign_room'])) {
     $frm_data = filteration($_POST);
 
-    // DEBUG: log incoming values
     error_log("assign_room called | booking_id: " . $frm_data['booking_id'] . " | room_no: " . $frm_data['room_no']);
 
-    // DEBUG: check if booking exists and show its current state
     $check = select(
         "SELECT bo.booking_id, bo.arrival, bo.booking_status, bd.room_no
          FROM booking_order bo
@@ -137,17 +181,14 @@ if (isset($_POST['assign_room'])) {
     }
 
     $check_row = mysqli_fetch_assoc($check);
-    error_log("DB row found: " . json_encode($check_row));
 
-    // Fetch full booking data for email
-    $query = "SELECT bo.*, bd.*, uc.email FROM `booking_order` bo
-              INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
-              INNER JOIN `user_cred` uc ON bo.user_id = uc.id
-              WHERE bo.booking_id = ?";
+    $query        = "SELECT bo.*, bd.*, uc.email FROM `booking_order` bo
+                     INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
+                     INNER JOIN `user_cred` uc ON bo.user_id = uc.id
+                     WHERE bo.booking_id = ?";
     $res          = select($query, [$frm_data['booking_id']], 'i');
     $booking_data = mysqli_fetch_assoc($res);
 
-    // Run the update
     $update_query = "UPDATE `booking_order` bo INNER JOIN `booking_details` bd
                      ON bo.booking_id = bd.booking_id
                      SET bo.arrival = ?, bo.rate_review = ?, bd.room_no = ?
@@ -157,31 +198,20 @@ if (isset($_POST['assign_room'])) {
     error_log("update() result: " . var_export($res, true));
 
     if ($res > 0) {
-        $subject = "Booking Confirmed - Order #" . $booking_data['order_id'];
-        $content = "
-        <html><body style='font-family:Arial,sans-serif;line-height:1.6'>
-            <div style='max-width:600px;margin:0 auto;padding:20px'>
-                <div style='background:#f8f9fa;padding:20px;text-align:center'>
-                    <h2>Your Booking Has Been Confirmed!</h2>
-                </div>
-                <p>Dear " . htmlspecialchars($booking_data['user_name']) . ",</p>
-                <p>Your booking has been confirmed and your room has been assigned.</p>
-                <div style='margin:20px 0;padding:15px;background:#f8f9fa'>
-                    <h3>Booking Details</h3>
-                    <p><strong>Order ID:</strong> " . htmlspecialchars($booking_data['order_id']) . "</p>
-                    <p><strong>Room Type:</strong> " . htmlspecialchars($booking_data['room_name']) . "</p>
-                    <p><strong>Room Number:</strong> " . htmlspecialchars($frm_data['room_no']) . "</p>
-                    <p><strong>Check-in:</strong> " . date("d-m-Y", strtotime($booking_data['check_in'])) . "</p>
-                    <p><strong>Check-out:</strong> " . date("d-m-Y", strtotime($booking_data['check_out'])) . "</p>
-                    <p><strong>Total Amount:</strong> NPR" . htmlspecialchars($booking_data['trans_amt']) . "</p>
-                </div>
-                <p>Best regards,<br>BookEase</p>
-            </div>
-        </body></html>";
+        $guest   = htmlspecialchars($booking_data['user_name'], ENT_QUOTES, 'UTF-8');
+        $rows    = mail_row('Order ID',     htmlspecialchars($booking_data['order_id']), false)
+                 . mail_row('Room Type',    htmlspecialchars($booking_data['room_name']), true)
+                 . mail_row('Room Number',  htmlspecialchars($frm_data['room_no']), false)
+                 . mail_row('Check-in',     date("d M Y", strtotime($booking_data['check_in'])), true)
+                 . mail_row('Check-out',    date("d M Y", strtotime($booking_data['check_out'])), false)
+                 . mail_row('Amount Paid',  'NPR ' . htmlspecialchars($booking_data['trans_amt']), true, true);
+
+        $note    = '<p style="margin:0 0 20px;color:#6b7280;font-size:14px;line-height:1.6;">Your room has been assigned. Please bring a valid ID at check-in. We look forward to welcoming you!</p>';
+        $content = mail_body('Room Assigned — You\'re All Set! 🎉', '#2ec1ac', $rows, $guest, $note);
+        $subject = "BookEase — Room Assigned for Order #" . $booking_data['order_id'];
 
         echo send_booking_mail($booking_data['email'], $subject, $content) ? "1" : "email_failed_ok";
     } else {
-        // DEBUG: return detailed info instead of plain "0"
         echo json_encode([
             'debug'      => 'update affected 0 rows',
             'booking_id' => $frm_data['booking_id'],
@@ -192,46 +222,37 @@ if (isset($_POST['assign_room'])) {
     exit;
 }
 
-// CANCEL BOOKING
+// ── CANCEL BOOKING ────────────────────────────────────────────────────────────
 if (isset($_POST['cancel_booking'])) {
     $frm_data = filteration($_POST);
 
-    // DEBUG: log incoming values
     error_log("cancel_booking called | booking_id: " . $frm_data['booking_id']);
 
-    $query = "SELECT bo.*, bd.*, uc.email FROM `booking_order` bo
-              INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
-              INNER JOIN `user_cred` uc ON bo.user_id = uc.id
-              WHERE bo.booking_id = ?";
+    $query        = "SELECT bo.*, bd.*, uc.email FROM `booking_order` bo
+                     INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
+                     INNER JOIN `user_cred` uc ON bo.user_id = uc.id
+                     WHERE bo.booking_id = ?";
     $res          = select($query, [$frm_data['booking_id']], 'i');
     $booking_data = mysqli_fetch_assoc($res);
 
-    $query  = "UPDATE `booking_order` SET `booking_status`=?, `refund`=? WHERE `booking_id`=?";
-    $res = update($query, ['cancelled', 0, $frm_data['booking_id']], 'sii');
+    $res = update(
+        "UPDATE `booking_order` SET `booking_status`=?, `refund`=? WHERE `booking_id`=?",
+        ['cancelled', 0, $frm_data['booking_id']], 'sii'
+    );
 
     error_log("cancel update() result: " . var_export($res, true));
 
     if ($res) {
-        $subject = "Booking Cancelled - Order #" . $booking_data['order_id'];
-        $content = "
-        <html><body style='font-family:Arial,sans-serif;line-height:1.6'>
-            <div style='max-width:600px;margin:0 auto;padding:20px'>
-                <div style='background:#f8f9fa;padding:20px;text-align:center'>
-                    <h2>Your Booking Has Been Cancelled</h2>
-                </div>
-                <p>Dear " . htmlspecialchars($booking_data['user_name']) . ",</p>
-                <p>Your booking has been cancelled as per your request.</p>
-                <div style='margin:20px 0;padding:15px;background:#f8f9fa'>
-                    <h3>Cancelled Booking Details</h3>
-                    <p><strong>Order ID:</strong> " . htmlspecialchars($booking_data['order_id']) . "</p>
-                    <p><strong>Room Type:</strong> " . htmlspecialchars($booking_data['room_name']) . "</p>
-                    <p><strong>Check-in:</strong> " . date("d-m-Y", strtotime($booking_data['check_in'])) . "</p>
-                    <p><strong>Check-out:</strong> " . date("d-m-Y", strtotime($booking_data['check_out'])) . "</p>
-                    <p><strong>Amount Paid:</strong> NPR" . htmlspecialchars($booking_data['trans_amt']) . "</p>
-                </div>
-                <p>Best regards,<br>BookEase</p>
-            </div>
-        </body></html>";
+        $guest   = htmlspecialchars($booking_data['user_name'], ENT_QUOTES, 'UTF-8');
+        $rows    = mail_row('Order ID',    htmlspecialchars($booking_data['order_id']), false)
+                 . mail_row('Room Type',   htmlspecialchars($booking_data['room_name']), true)
+                 . mail_row('Check-in',    date("d M Y", strtotime($booking_data['check_in'])), false)
+                 . mail_row('Check-out',   date("d M Y", strtotime($booking_data['check_out'])), true)
+                 . mail_row('Amount Paid', 'NPR ' . htmlspecialchars($booking_data['trans_amt']), false, true);
+
+        $note    = '<p style="margin:0 0 20px;color:#6b7280;font-size:14px;line-height:1.6;">Your booking has been cancelled. A refund will be processed if applicable. Please contact us if you have any questions.</p>';
+        $content = mail_body('Your Booking Has Been Cancelled', '#dc2626', $rows, $guest, $note);
+        $subject = "BookEase — Booking Cancelled for Order #" . $booking_data['order_id'];
 
         echo send_booking_mail($booking_data['email'], $subject, $content) ? "1" : "Email failed but booking cancelled";
     } else {
