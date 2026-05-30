@@ -2,22 +2,6 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-try {
-    require('../admin/inc/db_config.php');
-    echo "1 ok ";
-    require('../admin/inc/essentials.php');
-    echo "2 ok ";
-    require('../inc/google_config.php');
-    echo "3 ok ";
-    require('../inc/welcome_bonus.php');
-    echo "4 ok ";
-    require '../vendor/autoload.php';
-    echo "5 ok ";
-} catch (Throwable $e) {
-    echo "FAILED: " . $e->getMessage();
-}
-exit;
-
 require('../admin/inc/db_config.php');
 require('../admin/inc/essentials.php');
 require('../inc/google_config.php');
