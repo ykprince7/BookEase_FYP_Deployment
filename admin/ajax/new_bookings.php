@@ -1,4 +1,5 @@
 <?php
+ob_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -6,9 +7,9 @@ require(__DIR__ . '/../inc/db_config.php');
 require(__DIR__ . '/../inc/essentials.php');
 adminLogin();
 
-header('Content-Type: application/json');
+ob_clean();
 
-// ── Mailtrap HTTP API (no SMTP — works on Railway) ────────────────────────────
+// ── Mailtrap HTTP API ─────────────────────────────────────────────────────────
 function send_booking_mail($to, $subject, $content)
 {
     $api_token = getenv('MAILTRAP_API_TOKEN') ?: '136971d422bb7ec67ebbe3a29cb470d7';
@@ -37,6 +38,16 @@ function send_booking_mail($to, $subject, $content)
 
     error_log("Mailtrap API response ($status): " . $response);
     return $status === 200;
+}
+
+function mail_row($label, $value, $alt = false, $highlight = false)
+{
+    $bg    = $alt ? 'background:#fafafa;' : '';
+    $color = $highlight ? 'color:#2ec1ac;font-weight:700;font-size:15px;' : 'color:#0f172a;font-weight:600;';
+    return "<tr style=\"$bg\">
+        <td style=\"padding:11px 16px;color:#6b7280;font-size:14px;border-bottom:1px solid #f1f5f9;width:42%;\">$label</td>
+        <td style=\"padding:11px 16px;$color font-size:14px;border-bottom:1px solid #f1f5f9;\">$value</td>
+    </tr>";
 }
 
 function mail_body($heading, $heading_color, $rows_html, $guest_name, $note = '')
@@ -80,16 +91,6 @@ function mail_body($heading, $heading_color, $rows_html, $guest_name, $note = ''
 HTML;
 }
 
-function mail_row($label, $value, $alt = false, $highlight = false)
-{
-    $bg    = $alt ? 'background:#fafafa;' : '';
-    $color = $highlight ? 'color:#2ec1ac;font-weight:700;font-size:15px;' : 'color:#0f172a;font-weight:600;';
-    return "<tr style=\"$bg\">
-        <td style=\"padding:11px 16px;color:#6b7280;font-size:14px;border-bottom:1px solid #f1f5f9;width:42%;\">$label</td>
-        <td style=\"padding:11px 16px;$color font-size:14px;border-bottom:1px solid #f1f5f9;\">$value</td>
-    </tr>";
-}
-
 // ── GET BOOKINGS ──────────────────────────────────────────────────────────────
 if (isset($_POST['get_bookings'])) {
     $frm_data = filteration($_POST);
@@ -102,12 +103,8 @@ if (isset($_POST['get_bookings'])) {
 
     $res = select($query, ["%$frm_data[search]%", "%$frm_data[search]%", "%$frm_data[search]%", "booked", 0], 'sssss');
 
-    if (!$res) {
-        echo json_encode(['table_data' => "<tr><td colspan='5' class='text-center py-4'><b>Query failed.</b></td></tr>"]);
-        exit;
-    }
-
-    if (mysqli_num_rows($res) == 0) {
+    if (!$res || mysqli_num_rows($res) == 0) {
+        ob_clean();
         echo json_encode(['table_data' => "<tr><td colspan='5' class='text-center py-4'><b>No Data Found!</b></td></tr>"]);
         exit;
     }
@@ -157,6 +154,7 @@ if (isset($_POST['get_bookings'])) {
         $i++;
     }
 
+    ob_clean();
     echo json_encode(['table_data' => $table_data]);
     exit;
 }
@@ -176,12 +174,12 @@ if (isset($_POST['assign_room'])) {
     );
 
     if (!$check || mysqli_num_rows($check) == 0) {
-        echo json_encode(['debug' => 'booking_id not found in DB', 'booking_id' => $frm_data['booking_id']]);
+        ob_clean();
+        echo json_encode(['debug' => 'booking_id not found', 'booking_id' => $frm_data['booking_id']]);
         exit;
     }
 
-    $check_row = mysqli_fetch_assoc($check);
-
+    $check_row    = mysqli_fetch_assoc($check);
     $query        = "SELECT bo.*, bd.*, uc.email FROM `booking_order` bo
                      INNER JOIN `booking_details` bd ON bo.booking_id = bd.booking_id
                      INNER JOIN `user_cred` uc ON bo.user_id = uc.id
@@ -199,19 +197,22 @@ if (isset($_POST['assign_room'])) {
 
     if ($res > 0) {
         $guest   = htmlspecialchars($booking_data['user_name'], ENT_QUOTES, 'UTF-8');
-        $rows    = mail_row('Order ID',     htmlspecialchars($booking_data['order_id']), false)
-                 . mail_row('Room Type',    htmlspecialchars($booking_data['room_name']), true)
-                 . mail_row('Room Number',  htmlspecialchars($frm_data['room_no']), false)
-                 . mail_row('Check-in',     date("d M Y", strtotime($booking_data['check_in'])), true)
-                 . mail_row('Check-out',    date("d M Y", strtotime($booking_data['check_out'])), false)
-                 . mail_row('Amount Paid',  'NPR ' . htmlspecialchars($booking_data['trans_amt']), true, true);
+        $rows    = mail_row('Order ID',    htmlspecialchars($booking_data['order_id']), false)
+                 . mail_row('Room Type',   htmlspecialchars($booking_data['room_name']), true)
+                 . mail_row('Room Number', htmlspecialchars($frm_data['room_no']), false)
+                 . mail_row('Check-in',    date("d M Y", strtotime($booking_data['check_in'])), true)
+                 . mail_row('Check-out',   date("d M Y", strtotime($booking_data['check_out'])), false)
+                 . mail_row('Amount Paid', 'NPR ' . htmlspecialchars($booking_data['trans_amt']), true, true);
 
         $note    = '<p style="margin:0 0 20px;color:#6b7280;font-size:14px;line-height:1.6;">Your room has been assigned. Please bring a valid ID at check-in. We look forward to welcoming you!</p>';
         $content = mail_body('Room Assigned — You\'re All Set! 🎉', '#2ec1ac', $rows, $guest, $note);
         $subject = "BookEase — Room Assigned for Order #" . $booking_data['order_id'];
 
-        echo send_booking_mail($booking_data['email'], $subject, $content) ? "1" : "email_failed_ok";
+        $mail_sent = send_booking_mail($booking_data['email'], $subject, $content);
+        ob_clean();
+        echo $mail_sent ? "1" : "email_failed_ok";
     } else {
+        ob_clean();
         echo json_encode([
             'debug'      => 'update affected 0 rows',
             'booking_id' => $frm_data['booking_id'],
@@ -254,8 +255,11 @@ if (isset($_POST['cancel_booking'])) {
         $content = mail_body('Your Booking Has Been Cancelled', '#dc2626', $rows, $guest, $note);
         $subject = "BookEase — Booking Cancelled for Order #" . $booking_data['order_id'];
 
-        echo send_booking_mail($booking_data['email'], $subject, $content) ? "1" : "Email failed but booking cancelled";
+        $mail_sent = send_booking_mail($booking_data['email'], $subject, $content);
+        ob_clean();
+        echo $mail_sent ? "1" : "Email failed but booking cancelled";
     } else {
+        ob_clean();
         echo "0";
     }
     exit;
