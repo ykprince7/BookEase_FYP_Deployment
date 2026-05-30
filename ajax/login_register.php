@@ -6,9 +6,11 @@ require('../admin/inc/db_config.php');
 require('../admin/inc/essentials.php');
 require('../inc/google_config.php');
 require('../inc/welcome_bonus.php');
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 date_default_timezone_set("Asia/Kathmandu");
 
 require '../vendor/autoload.php';
@@ -74,23 +76,106 @@ function get_public_site_base_url()
     return 'http://localhost/BookEase';
 }
 
-// ✅ Mailtrap HTTP API — bypasses SMTP (works on Railway)
+function get_email_template($title, $body, $footer_note)
+{
+    return <<<HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$title</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f6f8;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f6f8;padding:40px 0;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" style="background:linear-gradient(135deg,#2ec1ac,#1a9e8c);border-radius:12px 12px 0 0;padding:36px 40px;">
+              <h1 style="margin:0;color:#ffffff;font-size:28px;font-weight:700;letter-spacing:-0.5px;">BookEase</h1>
+              <p style="margin:6px 0 0;color:rgba(255,255,255,0.85);font-size:14px;">Your trusted hotel booking platform</p>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background:#ffffff;padding:40px;border-left:1px solid #e8ecef;border-right:1px solid #e8ecef;">
+              $body
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background:#f8fafb;border:1px solid #e8ecef;border-top:none;border-radius:0 0 12px 12px;padding:24px 40px;text-align:center;">
+              <p style="margin:0;color:#9ca3af;font-size:12px;line-height:1.6;">$footer_note</p>
+              <p style="margin:8px 0 0;color:#9ca3af;font-size:12px;">&copy; 2026 BookEase. All rights reserved.</p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+HTML;
+}
+
 function send_mail($uemail, $token, $type)
 {
     $base = get_public_site_base_url();
 
     if ($type == "email_confirmation") {
-        $subject     = "BookEase - Verify your account OTP";
-        $mailBody    = "<p>Your verification OTP code is: <b>$token</b></p><p>Enter this OTP to verify your account.</p>";
+        $subject = "BookEase - Verify your account OTP";
+        $body = <<<HTML
+          <h2 style="margin:0 0 8px;color:#0f172a;font-size:22px;font-weight:700;">Verify your account</h2>
+          <p style="margin:0 0 24px;color:#6b7280;font-size:15px;line-height:1.6;">Thanks for signing up! Use the OTP below to verify your email address. This code expires in 24 hours.</p>
+
+          <div style="background:#f0fdf9;border:2px dashed #2ec1ac;border-radius:12px;padding:28px;text-align:center;margin:0 0 28px;">
+            <p style="margin:0 0 6px;color:#6b7280;font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Your OTP Code</p>
+            <p style="margin:0;color:#2ec1ac;font-size:42px;font-weight:800;letter-spacing:10px;">$token</p>
+          </div>
+
+          <p style="margin:0;color:#9ca3af;font-size:13px;line-height:1.6;">If you didn't create a BookEase account, you can safely ignore this email.</p>
+HTML;
+        $footer = "This is an automated message. Please do not reply to this email.";
+
     } else if ($type == "account_recovery_otp") {
-        $subject     = "BookEase - Password Reset OTP";
-        $mailBody    = "<p>Your password reset OTP is: <b>$token</b></p>";
+        $subject = "BookEase - Password Reset OTP";
+        $body = <<<HTML
+          <h2 style="margin:0 0 8px;color:#0f172a;font-size:22px;font-weight:700;">Reset your password</h2>
+          <p style="margin:0 0 24px;color:#6b7280;font-size:15px;line-height:1.6;">We received a request to reset your password. Use the OTP below to proceed. This code expires in 24 hours.</p>
+
+          <div style="background:#fff7ed;border:2px dashed #f97316;border-radius:12px;padding:28px;text-align:center;margin:0 0 28px;">
+            <p style="margin:0 0 6px;color:#6b7280;font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Password Reset OTP</p>
+            <p style="margin:0;color:#f97316;font-size:42px;font-weight:800;letter-spacing:10px;">$token</p>
+          </div>
+
+          <p style="margin:0;color:#9ca3af;font-size:13px;line-height:1.6;">If you didn't request a password reset, please ignore this email. Your password will remain unchanged.</p>
+HTML;
+        $footer = "For security reasons, this OTP is valid for 24 hours only.";
+
     } else {
-        $subject     = "Account Reset Link";
-        $query       = http_build_query(['account_recovery' => '1', 'email' => $uemail, 'token' => $token]);
-        $link        = $base . '/reset_password.php?' . $query;
-        $mailBody    = "Click here to reset: <a href=\"$link\">Reset Password</a>";
+        $subject = "BookEase - Account Reset Link";
+        $query   = http_build_query(['account_recovery' => '1', 'email' => $uemail, 'token' => $token]);
+        $link    = $base . '/reset_password.php?' . $query;
+        $body = <<<HTML
+          <h2 style="margin:0 0 8px;color:#0f172a;font-size:22px;font-weight:700;">Reset your password</h2>
+          <p style="margin:0 0 28px;color:#6b7280;font-size:15px;line-height:1.6;">Click the button below to reset your BookEase password.</p>
+
+          <div style="text-align:center;margin:0 0 28px;">
+            <a href="$link" style="display:inline-block;background:linear-gradient(135deg,#2ec1ac,#1a9e8c);color:#ffffff;text-decoration:none;padding:14px 36px;border-radius:8px;font-size:16px;font-weight:600;letter-spacing:0.3px;">Reset Password</a>
+          </div>
+
+          <p style="margin:0;color:#9ca3af;font-size:13px;line-height:1.6;">If you didn't request a password reset, please ignore this email. If the button doesn't work, copy and paste this link:<br><a href="$link" style="color:#2ec1ac;word-break:break-all;">$link</a></p>
+HTML;
+        $footer = "This link is valid for 24 hours. Do not share it with anyone.";
     }
+
+    $mailBody = get_email_template($subject, $body, $footer);
 
     $api_token = getenv('MAILTRAP_API_TOKEN') ?: '136971d422bb7ec67ebbe3a29cb470d7';
     $inbox_id  = getenv('MAILTRAP_INBOX_ID')  ?: '4664187';
@@ -120,6 +205,7 @@ function send_mail($uemail, $token, $type)
     return $status === 200 ? 1 : 0;
 }
 
+// Test mail endpoint
 if (isset($_GET['test_mail'])) {
     $result = send_mail('np03cs4a230422@heraldcollege.edu.np', '123456', 'email_confirmation');
     echo $result ? '✅ Mail sent! Check Mailtrap inbox.' : '❌ Mail failed! Check Railway logs.';
@@ -142,15 +228,17 @@ function is_at_least_18($dob)
     return $age >= 18 && $dob_date <= $today;
 }
 
-// Ensure banner_eligible column exists
-(function() {
-    global $con;
-    if (!isset($con)) { $con = $GLOBALS['con']; }
-    $chk = mysqli_query($con, "SHOW COLUMNS FROM `user_cred` LIKE 'banner_eligible'");
-    if ($chk && mysqli_num_rows($chk) == 0) {
-        mysqli_query($con, "ALTER TABLE `user_cred` ADD `banner_eligible` tinyint(1) NOT NULL DEFAULT 0");
-    }
-})();
+// Ensure banner_eligible column exists — only runs on POST requests
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    (function() {
+        global $con;
+        if (!isset($con)) { $con = $GLOBALS['con']; }
+        $chk = mysqli_query($con, "SHOW COLUMNS FROM `user_cred` LIKE 'banner_eligible'");
+        if ($chk && mysqli_num_rows($chk) == 0) {
+            mysqli_query($con, "ALTER TABLE `user_cred` ADD `banner_eligible` tinyint(1) NOT NULL DEFAULT 0");
+        }
+    })();
+}
 
 // Registration
 if (isset($_POST['register'])) {
@@ -173,13 +261,13 @@ if (isset($_POST['register'])) {
     $img = 'default.svg';
     if (!empty($_FILES['profile']['name']) && (int) $_FILES['profile']['error'] === UPLOAD_ERR_OK) {
         $img = uploadUserImage($_FILES['profile']);
-        if ($img == 'inv_img')   { echo 'inv_img';   exit; }
-        if ($img == 'upd_failed'){ echo 'upd_failed'; exit; }
+        if ($img == 'inv_img')    { echo 'inv_img';    exit; }
+        if ($img == 'upd_failed') { echo 'upd_failed'; exit; }
     }
 
     $enc_pass        = password_hash($data['pass'], PASSWORD_BCRYPT);
     $otp             = (string) random_int(100000, 999999);
-    $otp_expire_date = date("Y-m-d", strtotime('+1 day')); // ✅ expires tomorrow
+    $otp_expire_date = date("Y-m-d", strtotime('+1 day'));
 
     $query  = "INSERT INTO `user_cred`(`name`, `email`, `address`, `phonenum`, `pincode`, `dob`, `profile`, `password`, `token`, `t_expire`, `banner_eligible`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     $values = [$data['name'], $data['email'], $data['address'], $data['phonenum'], $data['pincode'], $data['dob'], $img, $enc_pass, $otp, $otp_expire_date, 1];
@@ -275,7 +363,7 @@ if (isset($_POST['forgot_pass'])) {
             if (!send_mail($data['email'], $token, 'account_recovery_otp')) {
                 echo 'mail_failed';
             } else {
-                $date  = date("Y-m-d", strtotime('+1 day')); // ✅ expires tomorrow
+                $date  = date("Y-m-d", strtotime('+1 day'));
                 $query = mysqli_query($con, "UPDATE `user_cred` SET `token`='$token', `t_expire`='$date' WHERE `id`='$u_fetch[id]'");
                 echo $query ? 1 : 'upd_failed';
             }
@@ -367,4 +455,3 @@ if (isset($_POST['google_auth'])) {
     echo 1;
     exit;
 }
-?>
