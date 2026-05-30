@@ -23,19 +23,19 @@ document.addEventListener("DOMContentLoaded", function () {
             if (modal) modal.hide();
             let resp = (this.responseText || "").trim();
             if (resp === "1") {
-                alert('success', "Room number assigned! Booking finalized.");
+                showAdminAlert('success', "Room number assigned! Booking finalized.");
                 assign_room_form.reset();
                 get_bookings();
             } else if (resp === "email_failed_ok") {
-                alert('success', "Room assigned. Confirmation email could not be sent.");
+                showAdminAlert('success', "Room assigned. Confirmation email could not be sent.");
                 assign_room_form.reset();
                 get_bookings();
             } else if (resp === "not_logged_in") {
-                alert('error', "Session expired. Please log in again.");
+                showAdminAlert('error', "Session expired. Please log in again.");
                 window.location.href = "index.php";
             } else {
                 console.error("Assign room unexpected response:", resp);
-                alert('error', resp ? "Could not assign room: " + resp : "Could not assign room. Check that MySQL is running.");
+                showAdminAlert('error', resp ? "Could not assign room: " + resp : "Could not assign room. Check that MySQL is running.");
             }
         };
         xhr.send(data);
@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "<tr><td colspan='5' class='text-center py-4'>No Data Found!</td></tr>";
         } catch(e) {
             console.error("Parse error:", e);
-            console.log("Raw response:", this.responseText);
             document.getElementById("table-data").innerHTML =
                 "<tr><td colspan='5' class='text-center text-danger'>Error loading data.</td></tr>";
         }
@@ -80,21 +79,50 @@ document.addEventListener("DOMContentLoaded", function () {
         xhr.onload = function () {
             let resp = this.responseText.trim();
             if (resp === "not_logged_in") {
-                alert('error', "Session expired. Please login again.");
+                showAdminAlert('error', "Session expired. Please login again.");
                 window.location.href = "index.php";
                 return;
             }
             if (resp == 1) {
-                alert('success', "Booking Cancelled!");
+                showAdminAlert('success', "Booking Cancelled!");
                 get_bookings();
             } else if (resp == "Email failed but booking cancelled") {
-                alert('success', "Booking cancelled (email failed).");
+                showAdminAlert('success', "Booking cancelled (email failed).");
                 get_bookings();
             } else {
                 console.error("Cancel booking unexpected response:", resp);
-                alert('error', "Server Down! (debug: " + resp + ")");
+                showAdminAlert('error', "Server Down! (debug: " + resp + ")");
             }
         };
         xhr.send(data);
     }
+  }
+  
+  // ✅ Admin alert function — success = green, error = red
+  function showAdminAlert(type, msg) {
+    // Try to use the global alert() if available (e.g. shared footer loaded it)
+    if (typeof alert === 'function' && alert.length >= 2) {
+        try { alert(type, msg); return; } catch(e) {}
+    }
+  
+    // Fallback: create a Bootstrap alert in the page
+    const bsClass = type === 'success' ? 'alert-success' : 'alert-danger';
+    const icon    = type === 'success' ? '✓' : '✕';
+  
+    let host = document.getElementById('admin-alert-host');
+    if (!host) {
+        host = document.createElement('div');
+        host.id = 'admin-alert-host';
+        host.style.cssText = 'position:fixed;top:80px;right:20px;z-index:9999;width:320px;';
+        document.body.appendChild(host);
+    }
+  
+    const el = document.createElement('div');
+    el.className = `alert ${bsClass} alert-dismissible fade show shadow`;
+    el.setAttribute('role', 'alert');
+    el.innerHTML = `<strong>${icon} ${msg}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+    host.appendChild(el);
+  
+    setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 300); }, 3500);
   }
